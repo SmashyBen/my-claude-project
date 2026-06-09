@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Music</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: #0f0f14;
+      color: #e8e8f0;
+      transition: background 0.6s ease, color 0.6s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+      color: var(--accent, #c8b8f8);
+      transition: color 0.6s ease;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: var(--subtle, #888);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+      transition: color 0.6s ease;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      background: var(--card-bg, #1c1c26);
+      border: 1px solid var(--border, #333);
+      border-radius: 8px;
+      color: var(--text, #e8e8f0);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.6s, color 0.6s;
+    }
+
+    input[type="text"]:focus, select:focus {
+      border-color: var(--accent, #c8b8f8);
+    }
+
+    select option { background: #1c1c26; }
+
+    .or {
+      text-align: center;
+      color: var(--subtle, #555);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--accent, #c8b8f8);
+      color: var(--btn-text, #0f0f14);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    button:hover { opacity: 0.85; }
+
+    #result {
+      margin-top: 2.5rem;
+      width: 100%;
+      max-width: 460px;
+      display: none;
+    }
+
+    .result-card {
+      background: var(--card-bg, #1c1c26);
+      border: 1px solid var(--border, #333);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: background 0.6s, border-color 0.6s;
+    }
+
+    .mood-label, .genre-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--subtle, #888);
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+      transition: color 0.6s;
+    }
+
+    .mood-name {
+      font-size: 1.5rem;
+      color: var(--accent, #c8b8f8);
+      margin-bottom: 1.4rem;
+      text-transform: capitalize;
+      transition: color 0.6s;
+    }
+
+    .genre-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text, #e8e8f0);
+      transition: color 0.6s;
+    }
+
+    .vibe {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--subtle, #aaa);
+      transition: color 0.6s;
+    }
+
+    .no-match {
+      color: var(--subtle, #888);
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .try-again {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--subtle, #666);
+      text-align: right;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+    }
+
+    .try-again:hover { color: var(--accent, #c8b8f8); }
+  </style>
+</head>
+<body>
+
+  <h1>Mood Music</h1>
+  <p class="subtitle">tell me how you feel — I'll find your sound</p>
+
+  <div class="controls">
+    <input type="text" id="moodInput" placeholder="Type a mood (or two, e.g. happy and rebellious…)" />
+    <div class="or">— or pick one —</div>
+    <select id="moodSelect">
+      <option value="">Browse moods…</option>
+      <option value="happy">Happy</option>
+      <option value="chill">Chill</option>
+      <option value="relaxed">Relaxed</option>
+      <option value="melancholy">Melancholy</option>
+      <option value="angry">Angry</option>
+      <option value="anxious">Anxious</option>
+      <option value="restless">Restless</option>
+      <option value="romantic">Romantic</option>
+      <option value="nostalgic">Nostalgic</option>
+      <option value="confident">Confident</option>
+      <option value="lonely">Lonely</option>
+      <option value="energetic">Energetic</option>
+      <option value="peaceful">Peaceful</option>
+      <option value="dark">Dark</option>
+      <option value="hopeful">Hopeful</option>
+      <option value="numb">Numb</option>
+      <option value="rebellious">Rebellious</option>
+    </select>
+    <button onclick="findMusic()">Find my sound</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const themes = {
+      happy:      { bg: '#1a1500', card: '#241e00', border: '#5a4a00', accent: '#f5c518', subtle: '#a08c30', text: '#fff8dc', btn: '#0f0f14' },
+      chill:      { bg: '#001a1a', card: '#002626', border: '#005555', accent: '#00c9c9', subtle: '#4a9999', text: '#d0f0f0', btn: '#001010' },
+      relaxed:    { bg: '#0e0e1a', card: '#16162a', border: '#3a3a6a', accent: '#9b9bf5', subtle: '#6666aa', text: '#e0e0ff', btn: '#0a0a14' },
+      melancholy: { bg: '#080d14', card: '#0e1520', border: '#1e3050', accent: '#5080c0', subtle: '#3a5a88', text: '#b8cce0', btn: '#04080f' },
+      angry:      { bg: '#160000', card: '#220000', border: '#550000', accent: '#cc2200', subtle: '#882200', text: '#ffe0dc', btn: '#0f0000' },
+      anxious:    { bg: '#0a100a', card: '#121a12', border: '#2a3a2a', accent: '#70a870', subtle: '#4a6a4a', text: '#d0e8d0', btn: '#050a05' },
+      restless:   { bg: '#0f0018', card: '#180028', border: '#440066', accent: '#cc44ff', subtle: '#7722aa', text: '#f0d0ff', btn: '#08000f' },
+      romantic:   { bg: '#180010', card: '#240018', border: '#550030', accent: '#ee4488', subtle: '#992255', text: '#ffe0f0', btn: '#0f0008' },
+      nostalgic:  { bg: '#150f00', card: '#201600', border: '#4a3800', accent: '#d4880a', subtle: '#8a6020', text: '#f5e8c0', btn: '#0a0800' },
+      confident:  { bg: '#0a0a00', card: '#141400', border: '#3a3a00', accent: '#d4c000', subtle: '#8a7a00', text: '#fffff0', btn: '#050500' },
+      lonely:     { bg: '#060a10', card: '#0a1018', border: '#182030', accent: '#3a6090', subtle: '#2a4060', text: '#b0c4d8', btn: '#030508' },
+      energetic:  { bg: '#100010', card: '#1a001a', border: '#440044', accent: '#ff00ff', subtle: '#990099', text: '#ffe0ff', btn: '#080008' },
+      peaceful:   { bg: '#061008', card: '#0c1a0e', border: '#1a3a1e', accent: '#55aa66', subtle: '#337744', text: '#d0f0d8', btn: '#030804' },
+      dark:       { bg: '#050508', card: '#0a0a10', border: '#1a1a28', accent: '#6644aa', subtle: '#442288', text: '#c0b0e0', btn: '#020204' },
+      hopeful:    { bg: '#080f14', card: '#101820', border: '#204060', accent: '#4499dd', subtle: '#2266aa', text: '#d0e8f8', btn: '#040810' },
+      numb:       { bg: '#0d0d0d', card: '#151515', border: '#303030', accent: '#888888', subtle: '#555555', text: '#cccccc', btn: '#080808' },
+      rebellious: { bg: '#120000', card: '#1e0000', border: '#4a0000', accent: '#ff2200', subtle: '#882200', text: '#ffe8e0', btn: '#0a0000' },
+    };
+
+    const moods = {
+      happy: [
+        { genre: "Neo-Soul / Funk", vibe: "Warm basslines, bright horns, and vocals that feel like a smile. Music that moves your body before your brain catches up. Think Stevie Wonder meeting modern-day Lizzo — joyful without being saccharine." },
+        { genre: "Disco / Dance-Pop", vibe: "Glittering production, four-on-the-floor rhythms, and melodies built to make strangers dance together. Unashamedly euphoric — the kind of music that makes a Tuesday feel like a Saturday night." },
+        { genre: "Afrobeats", vibe: "Polyrhythmic percussion, warm synths, and an irresistible forward momentum. Music that carries sunshine in its DNA. It doesn't ask you to be happy — it just makes it happen." }
+      ],
+      chill: [
+        { genre: "Lo-Fi Hip-Hop", vibe: "Dusty samples, slow beats with a slight wobble, rain sounds in the background. The musical equivalent of a warm drink and nowhere to be. Perfect for late afternoons when time moves slowly." },
+        { genre: "Chillwave", vibe: "Hazy synths, distant vocals soaked in reverb, melodies that drift like smoke. It exists somewhere between nostalgia and contentment. Not quite awake, not quite asleep — just floating." },
+        { genre: "Nu-Jazz / Downtempo", vibe: "Brushed drums, wandering bass, horns that feel unhurried. Like jazz slowed down to a resting heart rate. Music that makes a room feel comfortable just by being in it." }
+      ],
+      relaxed: [
+        { genre: "Acoustic Soul", vibe: "Soft fingerpicked guitar, warm close-mic'd vocals, nothing crowding the space. Music that breathes. It asks nothing of you — just invites you to settle." },
+        { genre: "Ambient Folk", vibe: "Gentle guitar loops, light field recordings, voices that feel like they're coming from the next room. Slow, unhurried, deeply comfortable. Music that feels like a Sunday morning." },
+        { genre: "Bossa Nova", vibe: "Nylon strings, quiet brushwork, melodies that sway rather than march. A Brazilian invention that somehow sounds like every relaxed afternoon you've ever had." }
+      ],
+      melancholy: [
+        { genre: "Sad Indie / Chamber Pop", vibe: "Strings that ache, vocals that sit just above a whisper. Music for staring out of windows. Beautiful in a way that almost hurts — the kind of sound that makes sadness feel worth feeling." },
+        { genre: "Slowcore", vibe: "Long pauses, sparse arrangements, guitars that drag like heavy weather. Music that doesn't rush grief. It sits with you rather than trying to fix you." },
+        { genre: "Post-Rock", vibe: "Instrumental arcs that build from nothing into something enormous — then fall back to silence. Emotional without a word being said. Music that mirrors the shape of a feeling, not the words for it." }
+      ],
+      angry: [
+        { genre: "Hardcore / Industrial Metal", vibe: "Heavy, abrasive, relentless. Guitars that sound like something tearing. The volume is the point — it meets anger where it lives and turns it into something physical." },
+        { genre: "Death Metal", vibe: "Blast beats, down-tuned guitars, vocals that sound inhuman. Technically precise chaos. It doesn't ask you to calm down — it validates every jagged edge of how you feel." },
+        { genre: "Noise Rock", vibe: "Feedback, distortion, structures that collapse on purpose. The opposite of pleasant. It sounds like something breaking — which is sometimes exactly the right sound." }
+      ],
+      anxious: [
+        { genre: "Ambient Electronic", vibe: "Slow-moving textures, no sudden edges, no drums demanding attention. Like someone turned the temperature of a room down just slightly. It doesn't fix the anxiety — it just sits beside it." },
+        { genre: "Modern Classical", vibe: "Solo piano, long held notes, harmonies that resolve slowly. Music with nowhere urgent to be. It doesn't fill the space — it reframes it." },
+        { genre: "Dark Ambient", vibe: "Sustained drones, deep reverb, the sense of a large room. Unexpectedly calming — it makes the unease feel intentional, like it belongs to the sound rather than to you." }
+      ],
+      restless: [
+        { genre: "Post-Punk / Art Rock", vibe: "Angular, nervy, always about to go somewhere else. This music can't sit still either. Perfect for pacing the room or the inside of your own head." },
+        { genre: "Math Rock", vibe: "Shifting time signatures, interlocking guitar patterns, forward propulsion that never quite settles. Technically restless — music that doesn't know how to stop moving." },
+        { genre: "Krautrock", vibe: "Motorik rhythms that drive forward relentlessly, hypnotic and slightly unhinged. Built for movement, for driving, for the feeling that you need to be somewhere else but don't know where." }
+      ],
+      romantic: [
+        { genre: "Bossa Nova / Soft Jazz", vibe: "Gentle nylon-string guitars, hushed brushed drums, voices that feel intimate. Music that makes a small room feel like the only place in the world. Sophisticated without being cold." },
+        { genre: "R&B / Contemporary Soul", vibe: "Lush production, harmonies stacked like architecture, lyrics that don't flinch from feeling. Music built for closeness — for slow dances and late nights." },
+        { genre: "Dream Pop", vibe: "Shimmering guitars, breathy vocals, reverb that makes everything feel soft-focused. Like a romantic moment remembered rather than happening. Tender and a little unreal." }
+      ],
+      nostalgic: [
+        { genre: "Classic Soul / Motown", vibe: "Warm lo-fi warmth, call-and-response vocals, melodies you feel like you already know. It sounds like a memory — even of something you never experienced. Lush, human, timeless." },
+        { genre: "Synth-Pop (80s)", vibe: "Gated drums, bright synthesisers, big choruses. The sound of a decade confident in its own future. Nostalgic even if you weren't there — and crushing if you were." },
+        { genre: "Indie Rock (90s)", vibe: "Distorted guitars, anthemic choruses, production that sounds slightly worn. Music that remembers being young and not knowing it was the best part. Bittersweet in the best way." }
+      ],
+      confident: [
+        { genre: "Hip-Hop / Trap", vibe: "Rolling 808 bass, crisp hi-hats, lyrics built from swagger. Music that assumes the room is already yours. Best played loudly, preferably walking somewhere." },
+        { genre: "Funk / G-Funk", vibe: "Deep groove, laid-back delivery, hooks that don't need to try hard because they already know they're good. Music that wears its confidence lightly — and somehow that makes it more." },
+        { genre: "Arena Rock", vibe: "Stadium-sized guitar riffs, massive choruses, production built to fill a space ten times bigger than you're in. Music that makes you feel like the main character." }
+      ],
+      lonely: [
+        { genre: "Singer-Songwriter / Folk", vibe: "One voice, one instrument, a lot of space. It doesn't try to fix the loneliness — it just acknowledges it without flinching. There's a strange comfort in feeling understood by a song." },
+        { genre: "Indie Folk", vibe: "Quiet harmonies, sparse arrangements, lyrics about distance and disconnection. Music that was made alone — and somehow that makes it feel less lonely to listen to." },
+        { genre: "Blues", vibe: "Call-and-response, bent notes, the weight of experience in every phrase. The oldest music for this feeling. It doesn't offer solutions — just the knowledge that this is a human thing, and it has been for a long time." }
+      ],
+      energetic: [
+        { genre: "House / Dance", vibe: "Four-on-the-floor kick drums, synths that build and release, tracks designed to make bodies move together. This is music as physical experience — the architecture of a good night out." },
+        { genre: "Drum and Bass", vibe: "170BPM breakbeats, sub-bass that rattles windows, relentless forward momentum. Music that outpaces thought. You don't listen to DnB — it carries you." },
+        { genre: "Punk / Hardcore", vibe: "Fast, loud, no wasted notes. The energy of something about to explode contained in three minutes. It doesn't build up — it's already at full power from the first second." }
+      ],
+      peaceful: [
+        { genre: "Modern Classical / Minimalist", vibe: "Sparse piano, slow harmonic movement, long silences that feel intentional. Music with no urgency. It creates space in your head rather than filling it." },
+        { genre: "Ambient", vibe: "Brian Eno invented this for airports but it belongs in gardens, in early mornings, in the moment before sleep. Sound that exists without demanding to be listened to." },
+        { genre: "Japanese City Pop", vibe: "Smooth, immaculately produced, unhurried. Music that sounds like a city at night from a height — all the activity made small and beautiful by distance." }
+      ],
+      dark: [
+        { genre: "Dark Ambient / Gothic", vibe: "Drones, deep reverbs, sounds at the edge of music. Something ancient and slightly unsettling — like standing in a very large empty building at night. Not scary, but aware." },
+        { genre: "Black Metal (Atmospheric)", vibe: "Tremolo guitars that blur into texture, blast beats that dissolve into ambience, a vastness that feels cosmic. Music for staring into the dark and finding it stares back — calmly." },
+        { genre: "Industrial", vibe: "Mechanical rhythms, harsh textures, sounds that weren't made to be comfortable. Music that takes the darkness seriously. Confrontational, but honest." }
+      ],
+      hopeful: [
+        { genre: "Indie Folk / Dreamy Pop", vibe: "Open guitar chords, vocals that reach upward, production that sounds like morning light. It doesn't pretend things are fine — it just insists they might be. Gentle and earnest." },
+        { genre: "Gospel / Gospel Soul", vibe: "Voices stacked into something bigger than their parts, music that believes in the future with its whole chest. Even secular ears feel the lift. It's permission to want better." },
+        { genre: "Post-Rock (Uplifting)", vibe: "Instrumental builds that rise slowly and arrive somewhere enormous. No lyrics needed — the arc is the message. Music that sounds like something beginning." }
+      ],
+      numb: [
+        { genre: "Shoegaze / Dream Pop", vibe: "Guitars buried in reverb, vocals half-dissolved into the mix, rhythms that drift. Music that doesn't demand anything from you. You can float inside it without having to feel." },
+        { genre: "Drone / Ambient", vibe: "Single sustained tones, almost no movement, sound as texture rather than melody. It fills space without interrupting it. For when you don't want music to do anything to you." },
+        { genre: "Trip-Hop", vibe: "Slow hip-hop beats, jazz samples, vocals delivered like dispatches from somewhere distant. Music from the grey space between moods. Portishead. Massive Attack. The sound of dissociation made beautiful." }
+      ],
+      rebellious: [
+        { genre: "Punk / Garage Rock", vibe: "Fast, loud, deliberately rough around the edges. This music doesn't want to be polished — the rawness is the statement. Three chords and the truth. Energy over precision, always." },
+        { genre: "Riot Grrrl", vibe: "Angry, feminist, deliberately uncomfortable for the right ears. Music made by people who were told to be quieter and turned the amps up instead. Political without losing the riff." },
+        { genre: "Oi! / Street Punk", vibe: "Singalong choruses and complete contempt for authority. Working class, blunt, alive. Music that doesn't dress up its anger — it puts its boots on." }
+      ]
+    };
+
+    const aliases = {
+      sad: "melancholy", sadness: "melancholy", blue: "melancholy", down: "melancholy", gloomy: "melancholy",
+      mad: "angry", furious: "angry", rage: "angry", frustrated: "angry", fuming: "angry",
+      nervous: "anxious", worried: "anxious", stressed: "anxious", tense: "anxious",
+      love: "romantic", loved: "romantic", tender: "romantic", romantic: "romantic",
+      hyped: "energetic", pumped: "energetic", excited: "energetic", fired: "energetic",
+      calm: "peaceful", serene: "peaceful",
+      isolated: "lonely", alone: "lonely",
+      strong: "confident", bold: "confident",
+      empty: "numb", detached: "numb", flat: "numb",
+      bleak: "dark", sinister: "dark",
+      positive: "hopeful", optimistic: "hopeful",
+      punk: "rebellious", defiant: "rebellious",
+      mellow: "chill", laid: "chill", easy: "relaxed", quiet: "relaxed"
+    };
+
+    let lastMood = null;
+    let lastPool = null;
+
+    function applyTheme(moodKey) {
+      const t = themes[moodKey] || themes.numb;
+      const root = document.documentElement;
+      root.style.setProperty('--accent', t.accent);
+      root.style.setProperty('--subtle', t.subtle);
+      root.style.setProperty('--card-bg', t.card);
+      root.style.setProperty('--border', t.border);
+      root.style.setProperty('--text', t.text);
+      root.style.setProperty('--btn-text', t.btn);
+      document.body.style.background = t.bg;
+      document.body.style.color = t.text;
+      // update select options bg
+      document.querySelectorAll('select option').forEach(o => o.style.background = t.card);
+    }
+
+    function resetTheme() {
+      document.documentElement.style.removeProperty('--accent');
+      document.documentElement.style.removeProperty('--subtle');
+      document.documentElement.style.removeProperty('--card-bg');
+      document.documentElement.style.removeProperty('--border');
+      document.documentElement.style.removeProperty('--text');
+      document.documentElement.style.removeProperty('--btn-text');
+      document.body.style.background = '#0f0f14';
+      document.body.style.color = '#e8e8f0';
+    }
+
+    function extractMood(raw) {
+      // split on "and", "&", "+" and pick the first recognisable mood
+      const parts = raw.toLowerCase().split(/\s+and\s+|&|\+/);
+      for (const part of parts) {
+        const word = part.trim();
+        const key = aliases[word] || word;
+        if (moods[key]) return key;
+      }
+      return null;
+    }
+
+    function findMusic() {
+      const textVal = document.getElementById('moodInput').value.trim();
+      const selectVal = document.getElementById('moodSelect').value;
+      const raw = textVal || selectVal;
+
+      if (!raw) { showResult(null, ''); return; }
+
+      const key = extractMood(raw);
+      if (!key) { showResult(null, raw); return; }
+
+      // pick a random genre from the pool (different from last if possible)
+      const pool = moods[key];
+      let idx = Math.floor(Math.random() * pool.length);
+      if (pool.length > 1 && lastMood === key && lastPool === idx) {
+        idx = (idx + 1) % pool.length;
+      }
+      lastMood = key;
+      lastPool = idx;
+
+      applyTheme(key);
+      showResult(pool[idx], key, raw, pool.length > 1);
+    }
+
+    function findAnother() {
+      if (!lastMood) return;
+      const pool = moods[lastMood];
+      let idx = Math.floor(Math.random() * pool.length);
+      if (pool.length > 1 && lastPool === idx) idx = (idx + 1) % pool.length;
+      lastPool = idx;
+      const raw = document.getElementById('moodInput').value.trim() || lastMood;
+      showResult(pool[idx], lastMood, raw, true);
+    }
+
+    document.getElementById('moodSelect').addEventListener('change', function() {
+      if (this.value) {
+        document.getElementById('moodInput').value = '';
+      }
+    });
+
+    document.getElementById('moodInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') findMusic();
+    });
+
+    function showResult(match, mood, raw, showTryAnother) {
+      const el = document.getElementById('result');
+      el.style.display = 'block';
+
+      if (!match) {
+        resetTheme();
+        el.innerHTML = `<div class="result-card"><p class="no-match">Hmm, I don't know that one yet. Try the dropdown, or use a simpler word.</p></div>`;
+        return;
+      }
+
+      const displayMood = raw && raw !== mood ? raw : mood;
+      const tryAgainHtml = showTryAnother
+        ? `<div class="try-again" onclick="findAnother()">↻ try another genre for this mood</div>`
+        : '';
+
+      el.innerHTML = `
+        <div class="result-card">
+          <div class="mood-label">Your mood</div>
+          <div class="mood-name">${displayMood}</div>
+          <div class="genre-label">Your sound</div>
+          <div class="genre-name">${match.genre}</div>
+          <div class="vibe">${match.vibe}</div>
+          ${tryAgainHtml}
+        </div>`;
+    }
+  </script>
+
+</body>
+</html>
