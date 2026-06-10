@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Session 3 complete. Steps 1–6 done. Next: Step 7 — GitHub: moving your save-points online.
+Session 3 complete. Steps 1–7 done. Next: Step 8 — Planning before building.
 
 ---
 
@@ -59,8 +59,8 @@ Session 3 complete. Steps 1–6 done. Next: Step 7 — GitHub: moving your save-
 - [x] **Step 6 — Git as a safety net (local commits)**
   Notes: Showed the git log — Ben saw all 10 checkpoints. Made a throwaway subtitle change, Ben asked to undo it, watched it roll back. Described what happened in his own words accurately: "made a change, then undid it by loading the last restore point." Clean.
 
-- [ ] **Step 7 — GitHub: moving your save-points online**
-  Notes:
+- [x] **Step 7 — GitHub: moving your save-points online**
+  Notes: GitHub account created (SmashyBen). GitHub CLI installed, authenticated, repo pushed to github.com/SmashyBen/my-claude-project (private). Becky (BeckyFLT) granted read access. Commit vs push: initially had it reversed, corrected cleanly and confirmed understanding.
 
 - [ ] **Step 8 — Planning before building**
   Notes:
@@ -83,4 +83,4 @@ Session 3 complete. Steps 1–6 done. Next: Step 7 — GitHub: moving your save-
 
 - **Session 1 — 2026-06-09:** Diagnostic complete. Ben: childhood DOS/QBasic, interests in music/photography/comedy, wants to build a website and VST plugins. Step 1 nailed first time — great instinct on the review beat. Step 2 in progress: built mood-music.html, Ben typed his own first prompt and gave sharp iterative feedback (added moods, random genre pools, colour theming). Good session — confident start.
 - **Session 2 — 2026-06-10:** Steps 2 and 3 complete, plus extra polish on mood-music.html. Combined input/dropdown into datalist, rule-of-thirds layout, Jamendo API with perpetual playlist engine (auto-advances, pre-fetches, next → skip button), light/dark theme with browser-preference detection and manual toggle, heading contrast fix, clears input on focus. Step 3: all four prompting principles landed cleanly — Ben rewrote the original brief from scratch and produced a genuinely strong one. Ready for Step 4 (working with files).
-- **Session 3 — 2026-06-10:** Steps 4 and 5 complete. File/folder mental model landed quickly. Ben described the visibility boundary in his own words. Used @ twice himself. Predict-then-check: seeded failure (incomplete Focused mood), Ben caught it immediately and described it clearly. Fixed it together. Ready for Step 6 (git as a safety net).
+- **Session 3 — 2026-06-10:** Steps 4–7 complete. File/folder mental model landed quickly. Ben described the visibility boundary in his own words. Used @ twice himself. Predict-then-check: seeded failure (incomplete Focused mood), Ben caught it immediately. Git: showed log, demonstrated undo, Ben described it accurately. GitHub: account created (SmashyBen), repo pushed, Becky invited. Commit vs push clarified. Ready for Step 8 (planning before building).
