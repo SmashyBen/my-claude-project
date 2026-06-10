@@ -196,6 +196,35 @@
       border-color: var(--accent, #c8b8f8);
     }
 
+    .playlist-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .playlist-row audio { flex: 1; height: 32px; }
+
+    .skip-btn {
+      width: auto;
+      padding: 0.25rem 0.65rem;
+      background: transparent;
+      border: 1px solid var(--border, #333);
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--subtle, #888);
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skip-btn:hover {
+      opacity: 1;
+      color: var(--accent, #c8b8f8);
+      border-color: var(--accent, #c8b8f8);
+    }
+
     body.light h1 { color: var(--accent, #4a3880); }
     body.light .subtitle { color: var(--subtle, #665577); }
   </style>
@@ -436,28 +465,74 @@
       "Oi! / Street Punk":           "punk",
     };
 
-    async function loadTrack(genreName) {
+    const pl = { tracks: [], index: 0, tags: null, offset: 0, fetching: false, exhausted: false };
+
+    async function startPlaylist(genreName) {
       if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+      Object.assign(pl, { tracks: [], index: 0, tags: genreTags[genreName] || null, offset: 0, fetching: false, exhausted: false });
       const container = document.getElementById('audio-container');
       if (!container) return;
-      const tags = genreTags[genreName];
-      if (!tags) return;
+      container.innerHTML = `
+        <div class="track-credit">
+          <strong class="track-name">Finding your sound…</strong>
+          <span class="track-artist"></span>
+        </div>
+        <div class="playlist-row">
+          <audio id="playlist-audio" controls></audio>
+          <button class="skip-btn" onclick="skipTrack()">next →</button>
+        </div>
+        <div class="jamendo-credit">Music via <a href="https://www.jamendo.com" target="_blank">Jamendo</a> · free to stream</div>`;
+      if (!pl.tags) return;
+      await fetchMoreTracks();
+      if (pl.tracks.length > 0) playTrack(0);
+    }
+
+    async function fetchMoreTracks() {
+      if (pl.fetching || pl.exhausted || !pl.tags) return;
+      pl.fetching = true;
       try {
-        const url = `https://api.jamendo.com/v3.0/tracks/?client_id=daf87ec3&format=json&limit=10&tags=${encodeURIComponent(tags)}&audioformat=mp32&order=popularity_total`;
+        const url = `https://api.jamendo.com/v3.0/tracks/?client_id=daf87ec3&format=json&limit=10&tags=${encodeURIComponent(pl.tags)}&audioformat=mp32&order=popularity_total&offset=${pl.offset}`;
         const res = await fetch(url);
         const data = await res.json();
         if (data.results && data.results.length > 0) {
-          const track = data.results[Math.floor(Math.random() * data.results.length)];
-          container.innerHTML = `
-            <div class="track-credit"><strong>${track.name}</strong> by ${track.artist_name}</div>
-            <audio controls src="${track.audio}"></audio>
-            <div class="jamendo-credit">Music via <a href="https://www.jamendo.com" target="_blank">Jamendo</a> · free to stream</div>`;
-          const audio = container.querySelector('audio');
-          audio.volume = 0.6;
-          audio.play().catch(() => {});
-          currentAudio = audio;
+          pl.tracks.push(...data.results);
+          pl.offset += data.results.length;
+        } else {
+          pl.exhausted = true;
         }
-      } catch (e) { /* silent fail */ }
+      } catch (e) {}
+      pl.fetching = false;
+    }
+
+    function playTrack(index) {
+      if (index >= pl.tracks.length) {
+        if (pl.exhausted && pl.tracks.length > 0) { index = 0; }
+        else { fetchMoreTracks().then(() => { if (pl.tracks.length > 0) playTrack(0); }); return; }
+      }
+      pl.index = index;
+      const track = pl.tracks[index];
+      const nameEl = document.querySelector('.track-name');
+      const artistEl = document.querySelector('.track-artist');
+      if (nameEl) nameEl.textContent = track.name;
+      if (artistEl) artistEl.textContent = ' — ' + track.artist_name;
+      const audio = document.getElementById('playlist-audio');
+      if (!audio) return;
+      audio.src = track.audio;
+      audio.volume = 0.6;
+      audio.play().catch(() => {});
+      currentAudio = audio;
+      audio.onended = () => {
+        const next = pl.index + 1;
+        if (pl.tracks.length - next <= 3 && !pl.exhausted) fetchMoreTracks();
+        playTrack(next >= pl.tracks.length && pl.exhausted ? 0 : next);
+      };
+    }
+
+    function skipTrack() {
+      if (!pl.tracks.length) return;
+      const next = pl.index + 1;
+      if (pl.tracks.length - next <= 3 && !pl.exhausted) fetchMoreTracks();
+      playTrack(next >= pl.tracks.length ? 0 : next);
     }
 
     function isLight() { return document.body.classList.contains('light'); }
@@ -576,7 +651,7 @@
           <div id="audio-container" class="audio-container"></div>
           ${tryAgainHtml}
         </div>`;
-      loadTrack(match.genre);
+      startPlaylist(match.genre);
     }
   </script>
 
