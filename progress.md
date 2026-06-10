@@ -25,7 +25,8 @@
 ## Where I am right now
 
 Session 3 complete. Steps 1–8 done. Next: Step 9 — Troubleshooting and recovery.
-Mood-music page is live at: https://smashyben.github.io/my-claude-project/step-2/mood-music.html
+Mood-music page live at: https://smashyben.github.io/my-claude-project/step-2/mood-music.html
+Repo public at: https://github.com/SmashyBen/my-claude-project
 
 ---
 
