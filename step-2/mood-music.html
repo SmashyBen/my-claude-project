@@ -484,7 +484,7 @@
         <div class="jamendo-credit">Music via <a href="https://www.jamendo.com" target="_blank">Jamendo</a> · free to stream</div>`;
       if (!pl.tags) return;
       await fetchMoreTracks();
-      if (pl.tracks.length > 0) playTrack(0);
+      if (pl.tracks.length > 0) playTrack(Math.floor(Math.random() * pl.tracks.length));
     }
 
     async function fetchMoreTracks() {
