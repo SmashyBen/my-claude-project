@@ -13,8 +13,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem;
+      justify-content: flex-start;
+      padding: 20vh 2rem 2rem;
       background: #0f0f14;
       color: #e8e8f0;
       transition: background 0.6s ease, color 0.6s ease;
@@ -45,7 +45,7 @@
       max-width: 460px;
     }
 
-    input[type="text"], select {
+    input[type="text"] {
       width: 100%;
       padding: 0.85rem 1.1rem;
       background: var(--card-bg, #1c1c26);
@@ -57,17 +57,8 @@
       transition: border-color 0.2s, background 0.6s, color 0.6s;
     }
 
-    input[type="text"]:focus, select:focus {
+    input[type="text"]:focus {
       border-color: var(--accent, #c8b8f8);
-    }
-
-    select option { background: #1c1c26; }
-
-    .or {
-      text-align: center;
-      color: var(--subtle, #555);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
     }
 
     button {
@@ -150,36 +141,93 @@
     }
 
     .try-again:hover { color: var(--accent, #c8b8f8); }
+
+    .audio-container {
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border, #333);
+    }
+
+    .track-credit {
+      font-size: 0.75rem;
+      color: var(--subtle, #888);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
+    }
+
+    .track-credit strong { color: var(--text, #e8e8f0); }
+
+    audio {
+      width: 100%;
+      height: 32px;
+      accent-color: var(--accent, #c8b8f8);
+    }
+
+    .jamendo-credit {
+      font-size: 0.65rem;
+      color: var(--subtle, #666);
+      margin-top: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    .jamendo-credit a { color: inherit; }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: auto;
+      padding: 0.3rem 0.65rem;
+      background: transparent;
+      border: 1px solid var(--border, #333);
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--subtle, #888);
+      cursor: pointer;
+      z-index: 100;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      opacity: 1;
+      color: var(--accent, #c8b8f8);
+      border-color: var(--accent, #c8b8f8);
+    }
+
+    body.light h1 { color: var(--accent, #4a3880); }
+    body.light .subtitle { color: var(--subtle, #665577); }
   </style>
 </head>
 <body>
+
+  <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Switch theme">☀</button>
 
   <h1>Mood Music</h1>
   <p class="subtitle">tell me how you feel — I'll find your sound</p>
 
   <div class="controls">
-    <input type="text" id="moodInput" placeholder="Type a mood (or two, e.g. happy and rebellious…)" />
-    <div class="or">— or pick one —</div>
-    <select id="moodSelect">
-      <option value="">Browse moods…</option>
-      <option value="happy">Happy</option>
-      <option value="chill">Chill</option>
-      <option value="relaxed">Relaxed</option>
-      <option value="melancholy">Melancholy</option>
-      <option value="angry">Angry</option>
-      <option value="anxious">Anxious</option>
-      <option value="restless">Restless</option>
-      <option value="romantic">Romantic</option>
-      <option value="nostalgic">Nostalgic</option>
-      <option value="confident">Confident</option>
-      <option value="lonely">Lonely</option>
-      <option value="energetic">Energetic</option>
-      <option value="peaceful">Peaceful</option>
-      <option value="dark">Dark</option>
-      <option value="hopeful">Hopeful</option>
-      <option value="numb">Numb</option>
-      <option value="rebellious">Rebellious</option>
-    </select>
+    <input type="text" id="moodInput" list="moodList" placeholder="Type a mood or choose one…" />
+    <datalist id="moodList">
+      <option value="Happy">
+      <option value="Chill">
+      <option value="Relaxed">
+      <option value="Melancholy">
+      <option value="Angry">
+      <option value="Anxious">
+      <option value="Restless">
+      <option value="Romantic">
+      <option value="Nostalgic">
+      <option value="Confident">
+      <option value="Lonely">
+      <option value="Energetic">
+      <option value="Peaceful">
+      <option value="Dark">
+      <option value="Hopeful">
+      <option value="Numb">
+      <option value="Rebellious">
+    </datalist>
     <button onclick="findMusic()">Find my sound</button>
   </div>
 
@@ -204,6 +252,26 @@
       hopeful:    { bg: '#080f14', card: '#101820', border: '#204060', accent: '#4499dd', subtle: '#2266aa', text: '#d0e8f8', btn: '#040810' },
       numb:       { bg: '#0d0d0d', card: '#151515', border: '#303030', accent: '#888888', subtle: '#555555', text: '#cccccc', btn: '#080808' },
       rebellious: { bg: '#120000', card: '#1e0000', border: '#4a0000', accent: '#ff2200', subtle: '#882200', text: '#ffe8e0', btn: '#0a0000' },
+    };
+
+    const lightThemes = {
+      happy:      { bg: '#fdfae8', card: '#fff8c8', border: '#d4b800', accent: '#9a7000', subtle: '#7a6010', text: '#2a2000', btn: '#fdfae8' },
+      chill:      { bg: '#e8f8f8', card: '#d0f2f2', border: '#30a0a0', accent: '#006666', subtle: '#2a8888', text: '#001414', btn: '#e8f8f8' },
+      relaxed:    { bg: '#f0eff8', card: '#e2dff4', border: '#7070c0', accent: '#3838a0', subtle: '#5555a0', text: '#0e0e28', btn: '#f0eff8' },
+      melancholy: { bg: '#edf1f8', card: '#dce4f0', border: '#6088c0', accent: '#204890', subtle: '#3060a0', text: '#061828', btn: '#edf1f8' },
+      angry:      { bg: '#faeaea', card: '#f5d8d8', border: '#cc4444', accent: '#aa0000', subtle: '#882222', text: '#1a0000', btn: '#faeaea' },
+      anxious:    { bg: '#eef5ee', card: '#ddeedd', border: '#509050', accent: '#2a6630', subtle: '#3a6040', text: '#081408', btn: '#eef5ee' },
+      restless:   { bg: '#f5eefa', card: '#ecddf5', border: '#9944cc', accent: '#6600aa', subtle: '#6622aa', text: '#0e0018', btn: '#f5eefa' },
+      romantic:   { bg: '#faedf4', card: '#f5d8ea', border: '#cc4488', accent: '#990055', subtle: '#882255', text: '#1a0010', btn: '#faedf4' },
+      nostalgic:  { bg: '#faf4e8', card: '#f5e8c8', border: '#c87800', accent: '#8a5000', subtle: '#7a5020', text: '#1a1000', btn: '#faf4e8' },
+      confident:  { bg: '#f8f8e8', card: '#f2f2c8', border: '#b8aa00', accent: '#7a7000', subtle: '#6a6000', text: '#141400', btn: '#f8f8e8' },
+      lonely:     { bg: '#edf2f8', card: '#dce6f4', border: '#4878b0', accent: '#1a4880', subtle: '#2a5070', text: '#060e18', btn: '#edf2f8' },
+      energetic:  { bg: '#f8e8f8', card: '#f0d0f0', border: '#cc00cc', accent: '#880088', subtle: '#770077', text: '#140014', btn: '#f8e8f8' },
+      peaceful:   { bg: '#eef6ef', card: '#dceedd', border: '#3a8848', accent: '#1a6630', subtle: '#2a6638', text: '#061008', btn: '#eef6ef' },
+      dark:       { bg: '#f0eef6', card: '#e4dff0', border: '#7755bb', accent: '#4422aa', subtle: '#442299', text: '#0a0818', btn: '#f0eef6' },
+      hopeful:    { bg: '#eaf3fa', card: '#d8eaf8', border: '#3388cc', accent: '#1166aa', subtle: '#1a5588', text: '#04101a', btn: '#eaf3fa' },
+      numb:       { bg: '#f2f2f2', card: '#e8e8e8', border: '#aaaaaa', accent: '#555555', subtle: '#777777', text: '#141414', btn: '#f2f2f2' },
+      rebellious: { bg: '#faeaea', card: '#f5d8d8', border: '#cc2200', accent: '#990000', subtle: '#882200', text: '#160000', btn: '#faeaea' },
     };
 
     const moods = {
@@ -312,9 +380,91 @@
 
     let lastMood = null;
     let lastPool = null;
+    let currentAudio = null;
+
+    const genreTags = {
+      "Neo-Soul / Funk":             "funk",
+      "Disco / Dance-Pop":           "disco",
+      "Afrobeats":                   "afrobeat",
+      "Lo-Fi Hip-Hop":               "lofi",
+      "Chillwave":                   "chillwave",
+      "Nu-Jazz / Downtempo":         "downtempo",
+      "Acoustic Soul":               "soul",
+      "Ambient Folk":                "folk",
+      "Bossa Nova":                  "bossanova",
+      "Sad Indie / Chamber Pop":     "indie",
+      "Slowcore":                    "indie",
+      "Post-Rock":                   "postrock",
+      "Hardcore / Industrial Metal": "metal",
+      "Death Metal":                 "deathmetal",
+      "Noise Rock":                  "rock",
+      "Ambient Electronic":          "ambient",
+      "Modern Classical":            "classical",
+      "Dark Ambient":                "darkambient",
+      "Post-Punk / Art Rock":        "postpunk",
+      "Math Rock":                   "mathrock",
+      "Krautrock":                   "rock",
+      "Bossa Nova / Soft Jazz":      "bossanova",
+      "R&B / Contemporary Soul":     "rnb",
+      "Dream Pop":                   "dreampop",
+      "Classic Soul / Motown":       "soul",
+      "Synth-Pop (80s)":             "synthpop",
+      "Indie Rock (90s)":            "indie",
+      "Hip-Hop / Trap":              "hiphop",
+      "Funk / G-Funk":               "funk",
+      "Arena Rock":                  "rock",
+      "Singer-Songwriter / Folk":    "folk",
+      "Indie Folk":                  "folk",
+      "Blues":                       "blues",
+      "House / Dance":               "house",
+      "Drum and Bass":               "drumandbass",
+      "Punk / Hardcore":             "punk",
+      "Modern Classical / Minimalist": "classical",
+      "Ambient":                     "ambient",
+      "Japanese City Pop":           "pop",
+      "Dark Ambient / Gothic":       "darkambient",
+      "Black Metal (Atmospheric)":   "blackmetal",
+      "Industrial":                  "industrial",
+      "Indie Folk / Dreamy Pop":     "folk",
+      "Gospel / Gospel Soul":        "gospel",
+      "Post-Rock (Uplifting)":       "postrock",
+      "Shoegaze / Dream Pop":        "shoegaze",
+      "Drone / Ambient":             "drone",
+      "Trip-Hop":                    "triphop",
+      "Punk / Garage Rock":          "punk",
+      "Riot Grrrl":                  "punk",
+      "Oi! / Street Punk":           "punk",
+    };
+
+    async function loadTrack(genreName) {
+      if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+      const container = document.getElementById('audio-container');
+      if (!container) return;
+      const tags = genreTags[genreName];
+      if (!tags) return;
+      try {
+        const url = `https://api.jamendo.com/v3.0/tracks/?client_id=daf87ec3&format=json&limit=10&tags=${encodeURIComponent(tags)}&audioformat=mp32&order=popularity_total`;
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.results && data.results.length > 0) {
+          const track = data.results[Math.floor(Math.random() * data.results.length)];
+          container.innerHTML = `
+            <div class="track-credit"><strong>${track.name}</strong> by ${track.artist_name}</div>
+            <audio controls src="${track.audio}"></audio>
+            <div class="jamendo-credit">Music via <a href="https://www.jamendo.com" target="_blank">Jamendo</a> · free to stream</div>`;
+          const audio = container.querySelector('audio');
+          audio.volume = 0.6;
+          audio.play().catch(() => {});
+          currentAudio = audio;
+        }
+      } catch (e) { /* silent fail */ }
+    }
+
+    function isLight() { return document.body.classList.contains('light'); }
 
     function applyTheme(moodKey) {
-      const t = themes[moodKey] || themes.numb;
+      const palette = isLight() ? lightThemes : themes;
+      const t = palette[moodKey] || palette.numb;
       const root = document.documentElement;
       root.style.setProperty('--accent', t.accent);
       root.style.setProperty('--subtle', t.subtle);
@@ -324,8 +474,6 @@
       root.style.setProperty('--btn-text', t.btn);
       document.body.style.background = t.bg;
       document.body.style.color = t.text;
-      // update select options bg
-      document.querySelectorAll('select option').forEach(o => o.style.background = t.card);
     }
 
     function resetTheme() {
@@ -335,8 +483,24 @@
       document.documentElement.style.removeProperty('--border');
       document.documentElement.style.removeProperty('--text');
       document.documentElement.style.removeProperty('--btn-text');
-      document.body.style.background = '#0f0f14';
-      document.body.style.color = '#e8e8f0';
+      document.body.style.background = isLight() ? '#f5f3ee' : '#0f0f14';
+      document.body.style.color    = isLight() ? '#1a1a2e' : '#e8e8f0';
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const btn = document.getElementById('theme-toggle');
+      btn.textContent = isLight() ? '☾' : '☀';
+      if (lastMood) applyTheme(lastMood); else resetTheme();
+    }
+
+    function initTheme() {
+      if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.body.classList.add('light');
+        document.body.style.background = '#f5f3ee';
+        document.body.style.color = '#1a1a2e';
+        document.getElementById('theme-toggle').textContent = '☾';
+      }
     }
 
     function extractMood(raw) {
@@ -351,9 +515,7 @@
     }
 
     function findMusic() {
-      const textVal = document.getElementById('moodInput').value.trim();
-      const selectVal = document.getElementById('moodSelect').value;
-      const raw = textVal || selectVal;
+      const raw = document.getElementById('moodInput').value.trim();
 
       if (!raw) { showResult(null, ''); return; }
 
@@ -383,15 +545,11 @@
       showResult(pool[idx], lastMood, raw, true);
     }
 
-    document.getElementById('moodSelect').addEventListener('change', function() {
-      if (this.value) {
-        document.getElementById('moodInput').value = '';
-      }
-    });
-
     document.getElementById('moodInput').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') findMusic();
     });
+
+    initTheme();
 
     function showResult(match, mood, raw, showTryAnother) {
       const el = document.getElementById('result');
@@ -415,8 +573,10 @@
           <div class="genre-label">Your sound</div>
           <div class="genre-name">${match.genre}</div>
           <div class="vibe">${match.vibe}</div>
+          <div id="audio-container" class="audio-container"></div>
           ${tryAgainHtml}
         </div>`;
+      loadTrack(match.genre);
     }
   </script>
 

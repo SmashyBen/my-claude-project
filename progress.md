@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Session 1 — Step 1 complete. Step 2 in progress: mood-music.html built and working, still iterating on it. Next session: review the finished page together, then move to Step 3.
+Session 2 complete. Steps 1 and 2 done. Next: Step 3 — Good prompts vs bad.
 
 ---
 
@@ -44,8 +44,8 @@ Session 1 — Step 1 complete. Step 2 in progress: mood-music.html built and wor
 - [x] **Step 1 — What an AI agent is + the prompt → action → review loop**
   Notes: Nailed it first time. Described the loop accurately in his own words — particularly good on review: "making sure what you did is what I had in mind."
 
-- [ ] **Step 2 — First prompts + the tiny build** *(in progress)*
-  Notes: Built mood-music.html. Ben typed the first prompt himself. Iterated with good feedback — added chill/relaxed moods, multiple genres per mood with random selection, colour theming per mood, combined mood input. File lives at step-2/mood-music.html.
+- [x] **Step 2 — First prompts + the tiny build**
+  Notes: Built mood-music.html. Ben typed the first prompt himself. Iterated with good feedback — added chill/relaxed moods, multiple genres per mood with random selection, colour theming per mood, combined mood input, Jamendo API integration for real audio playback, light/dark theme with browser-preference detection and manual toggle. Strong instincts throughout — rule-of-thirds positioning, combining the input/dropdown, noticing the heading contrast issue in light mode. File lives at step-2/mood-music.html.
 
 - [ ] **Step 3 — Good prompts vs bad**
   Notes:
@@ -82,3 +82,4 @@ Session 1 — Step 1 complete. Step 2 in progress: mood-music.html built and wor
 ## Session log
 
 - **Session 1 — 2026-06-09:** Diagnostic complete. Ben: childhood DOS/QBasic, interests in music/photography/comedy, wants to build a website and VST plugins. Step 1 nailed first time — great instinct on the review beat. Step 2 in progress: built mood-music.html, Ben typed his own first prompt and gave sharp iterative feedback (added moods, random genre pools, colour theming). Good session — confident start.
+- **Session 2 — 2026-06-10:** Step 2 complete. Polished mood-music.html significantly: combined input/dropdown into a single datalist field, moved layout to upper-third (Ben's own rule-of-thirds instinct), integrated Jamendo API for real audio playback with autoplay at 60% volume, added light/dark theme with browser-preference detection and manual toggle, fixed heading contrast in light mode. Ben's design instincts were strong throughout — spotted issues unprompted. Ready for Step 3.
