@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Session 3 complete. Steps 1–5 done. Next: Step 6 — Git as a safety net.
+Session 3 complete. Steps 1–6 done. Next: Step 7 — GitHub: moving your save-points online.
 
 ---
 
@@ -56,8 +56,8 @@ Session 3 complete. Steps 1–5 done. Next: Step 6 — Git as a safety net.
 - [x] **Step 5 — Reviewing AI output critically**
   Notes: Predict-then-check habit landed cleanly. Seeded a failure (added Focused to datalist only, missing moods data and themes). Ben gave a thorough three-part prediction, tested it, caught the failure immediately and described it clearly. Second attempt matched prediction. Good instincts throughout.
 
-- [ ] **Step 6 — Git as a safety net (local commits)**
-  Notes:
+- [x] **Step 6 — Git as a safety net (local commits)**
+  Notes: Showed the git log — Ben saw all 10 checkpoints. Made a throwaway subtitle change, Ben asked to undo it, watched it roll back. Described what happened in his own words accurately: "made a change, then undid it by loading the last restore point." Clean.
 
 - [ ] **Step 7 — GitHub: moving your save-points online**
   Notes:
