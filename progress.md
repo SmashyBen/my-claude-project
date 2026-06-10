@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-09
-- **Last updated:** 2026-06-09
+- **Last updated:** 2026-06-10
 - **Curriculum version:** v1
 
 ---
@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Session 2 complete. Steps 1, 2, and 3 done. Next: Step 4 — Working with files.
+Session 3 complete. Steps 1–4 done. Next: Step 5 — Reviewing AI output critically.
 
 ---
 
@@ -50,8 +50,8 @@ Session 2 complete. Steps 1, 2, and 3 done. Next: Step 4 — Working with files.
 - [x] **Step 3 — Good prompts vs bad**
   Notes: All four principles landed cleanly — Ben had already been applying most of them instinctively. Rewrote the original mood-music prompt from scratch unprompted; the result was genuinely strong (purpose, UI specifics, numbers, edge cases, design intent). Named "rule of thirds" as an example of show-don't-tell. No friction on any principle.
 
-- [ ] **Step 4 — Working with files**
-  Notes:
+- [x] **Step 4 — Working with files**
+  Notes: Mental model landed cleanly — Ben described the visibility boundary in his own words ("in my claude project, you can see only that folder"). Used @ himself twice: once to describe the file, once to request a specific change (random playlist start). Narrate-then-edit cycle worked well; read the plain-English explanation and said go before the change ran.
 
 - [ ] **Step 5 — Reviewing AI output critically**
   Notes:
@@ -83,3 +83,4 @@ Session 2 complete. Steps 1, 2, and 3 done. Next: Step 4 — Working with files.
 
 - **Session 1 — 2026-06-09:** Diagnostic complete. Ben: childhood DOS/QBasic, interests in music/photography/comedy, wants to build a website and VST plugins. Step 1 nailed first time — great instinct on the review beat. Step 2 in progress: built mood-music.html, Ben typed his own first prompt and gave sharp iterative feedback (added moods, random genre pools, colour theming). Good session — confident start.
 - **Session 2 — 2026-06-10:** Steps 2 and 3 complete, plus extra polish on mood-music.html. Combined input/dropdown into datalist, rule-of-thirds layout, Jamendo API with perpetual playlist engine (auto-advances, pre-fetches, next → skip button), light/dark theme with browser-preference detection and manual toggle, heading contrast fix, clears input on focus. Step 3: all four prompting principles landed cleanly — Ben rewrote the original brief from scratch and produced a genuinely strong one. Ready for Step 4 (working with files).
+- **Session 3 — 2026-06-10:** Step 4 complete. File/folder mental model landed quickly. Ben described the visibility boundary in his own words without prompting. Used @ twice himself — once to describe the file, once to request a specific change (random playlist start position). Narrate-then-edit cycle smooth; read the plain-English summary and confirmed before the change ran. Ready for Step 5 (reviewing AI output critically).
