@@ -18,12 +18,14 @@
 - **Day-to-day apps:** YouTube, WhatsApp, Duolingo. Wants to make more use of his phone.
 - **Tangent tolerance:** Mostly on task, occasional tangent fine
 - **Free notes:** VST plugins is an ambitious long-term goal — good north star. Website hesitation seems self-confidence related as much as technical. Keep that in mind when framing what we build.
+- **GitHub:** SmashyBen
 
 ---
 
 ## Where I am right now
 
 Session 3 complete. Steps 1–8 done. Next: Step 9 — Troubleshooting and recovery.
+Mood-music page is live at: https://smashyben.github.io/my-claude-project/step-2/mood-music.html
 
 ---
 
