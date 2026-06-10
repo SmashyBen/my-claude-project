@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Session 2 complete. Steps 1 and 2 done. Next: Step 3 — Good prompts vs bad.
+Session 2 complete. Steps 1, 2, and 3 done. Next: Step 4 — Working with files.
 
 ---
 
@@ -47,8 +47,8 @@ Session 2 complete. Steps 1 and 2 done. Next: Step 3 — Good prompts vs bad.
 - [x] **Step 2 — First prompts + the tiny build**
   Notes: Built mood-music.html. Ben typed the first prompt himself. Iterated with good feedback — added chill/relaxed moods, multiple genres per mood with random selection, colour theming per mood, combined mood input, Jamendo API integration for real audio playback, light/dark theme with browser-preference detection and manual toggle. Strong instincts throughout — rule-of-thirds positioning, combining the input/dropdown, noticing the heading contrast issue in light mode. File lives at step-2/mood-music.html.
 
-- [ ] **Step 3 — Good prompts vs bad**
-  Notes:
+- [x] **Step 3 — Good prompts vs bad**
+  Notes: All four principles landed cleanly — Ben had already been applying most of them instinctively. Rewrote the original mood-music prompt from scratch unprompted; the result was genuinely strong (purpose, UI specifics, numbers, edge cases, design intent). Named "rule of thirds" as an example of show-don't-tell. No friction on any principle.
 
 - [ ] **Step 4 — Working with files**
   Notes:
