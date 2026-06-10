@@ -256,6 +256,7 @@
       <option value="Hopeful">
       <option value="Numb">
       <option value="Rebellious">
+      <option value="Focused">
     </datalist>
     <button onclick="findMusic()">Find my sound</button>
   </div>
@@ -281,6 +282,7 @@
       hopeful:    { bg: '#080f14', card: '#101820', border: '#204060', accent: '#4499dd', subtle: '#2266aa', text: '#d0e8f8', btn: '#040810' },
       numb:       { bg: '#0d0d0d', card: '#151515', border: '#303030', accent: '#888888', subtle: '#555555', text: '#cccccc', btn: '#080808' },
       rebellious: { bg: '#120000', card: '#1e0000', border: '#4a0000', accent: '#ff2200', subtle: '#882200', text: '#ffe8e0', btn: '#0a0000' },
+      focused:    { bg: '#080d10', card: '#0e1518', border: '#1e3540', accent: '#30a0c0', subtle: '#2a6880', text: '#c8e4f0', btn: '#040810' },
     };
 
     const lightThemes = {
@@ -301,6 +303,7 @@
       hopeful:    { bg: '#eaf3fa', card: '#d8eaf8', border: '#3388cc', accent: '#1166aa', subtle: '#1a5588', text: '#04101a', btn: '#eaf3fa' },
       numb:       { bg: '#f2f2f2', card: '#e8e8e8', border: '#aaaaaa', accent: '#555555', subtle: '#777777', text: '#141414', btn: '#f2f2f2' },
       rebellious: { bg: '#faeaea', card: '#f5d8d8', border: '#cc2200', accent: '#990000', subtle: '#882200', text: '#160000', btn: '#faeaea' },
+      focused:    { bg: '#eaf5f8', card: '#d8eef5', border: '#40a0c0', accent: '#1a6880', subtle: '#2a7890', text: '#061418', btn: '#eaf5f8' },
     };
 
     const moods = {
@@ -388,6 +391,11 @@
         { genre: "Punk / Garage Rock", vibe: "Fast, loud, deliberately rough around the edges. This music doesn't want to be polished — the rawness is the statement. Three chords and the truth. Energy over precision, always." },
         { genre: "Riot Grrrl", vibe: "Angry, feminist, deliberately uncomfortable for the right ears. Music made by people who were told to be quieter and turned the amps up instead. Political without losing the riff." },
         { genre: "Oi! / Street Punk", vibe: "Singalong choruses and complete contempt for authority. Working class, blunt, alive. Music that doesn't dress up its anger — it puts its boots on." }
+      ],
+      focused: [
+        { genre: "Lo-Fi Hip-Hop", vibe: "Dusty beats, gentle crackle, no lyrics to pull your attention sideways. The musical equivalent of a clear desk — just enough texture to stop the silence feeling empty, not enough to distract." },
+        { genre: "Minimal Electronic", vibe: "Repeating patterns, slow evolution, no sudden surprises. Music that creates a groove and stays in it. Your brain locks onto the rhythm and the rest of the thinking gets easier." },
+        { genre: "Modern Classical / Minimalist", vibe: "Solo piano or sparse strings, long pauses, harmonies that don't demand attention. Music that clears space in your head rather than filling it. The sound of a room you can actually think in." }
       ]
     };
 
@@ -459,6 +467,7 @@
       "Post-Rock (Uplifting)":       "postrock",
       "Shoegaze / Dream Pop":        "shoegaze",
       "Drone / Ambient":             "drone",
+      "Minimal Electronic":          "electronic",
       "Trip-Hop":                    "triphop",
       "Punk / Garage Rock":          "punk",
       "Riot Grrrl":                  "punk",
