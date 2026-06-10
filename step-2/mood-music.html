@@ -624,6 +624,10 @@
       if (e.key === 'Enter') findMusic();
     });
 
+    document.getElementById('moodInput').addEventListener('focus', function() {
+      this.value = '';
+    });
+
     initTheme();
 
     function showResult(match, mood, raw, showTryAnother) {
