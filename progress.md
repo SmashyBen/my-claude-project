@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Session 3 complete. Steps 1–7 done. Next: Step 8 — Planning before building.
+Session 3 complete. Steps 1–8 done. Next: Step 9 — Troubleshooting and recovery.
 
 ---
 
@@ -62,8 +62,8 @@ Session 3 complete. Steps 1–7 done. Next: Step 8 — Planning before building.
 - [x] **Step 7 — GitHub: moving your save-points online**
   Notes: GitHub account created (SmashyBen). GitHub CLI installed, authenticated, repo pushed to github.com/SmashyBen/my-claude-project (private). Becky (BeckyFLT) granted read access. Commit vs push: initially had it reversed, corrected cleanly and confirmed understanding.
 
-- [ ] **Step 8 — Planning before building**
-  Notes:
+- [x] **Step 8 — Planning before building**
+  Notes: Planned Git Fiddler — a standalone low-latency guitar processing app. Ben described the problem clearly before the solution. Signal chain: pre-IR VST bank (3 slots) → IR loader with inline browser → post-IR VST bank (3 slots). Tuner taps input. Tech: JUCE/C++. Ben answered all three blocking questions unprompted and refined the design (two banks split at IR). plan.md written and pushed.
 
 - [ ] **Step 9 — Troubleshooting and recovery**
   Notes:

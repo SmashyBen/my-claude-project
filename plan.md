@@ -127,4 +127,4 @@ These are things that could come later if you want them.
 
 ## Working title
 
-Needs a name. Something short, one word. Not "GuitarApp".
+**Git Fiddler**
