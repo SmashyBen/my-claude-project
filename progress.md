@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Session 3 complete. Steps 1–4 done. Next: Step 5 — Reviewing AI output critically.
+Session 3 complete. Steps 1–5 done. Next: Step 6 — Git as a safety net.
 
 ---
 
@@ -53,8 +53,8 @@ Session 3 complete. Steps 1–4 done. Next: Step 5 — Reviewing AI output criti
 - [x] **Step 4 — Working with files**
   Notes: Mental model landed cleanly — Ben described the visibility boundary in his own words ("in my claude project, you can see only that folder"). Used @ himself twice: once to describe the file, once to request a specific change (random playlist start). Narrate-then-edit cycle worked well; read the plain-English explanation and said go before the change ran.
 
-- [ ] **Step 5 — Reviewing AI output critically**
-  Notes:
+- [x] **Step 5 — Reviewing AI output critically**
+  Notes: Predict-then-check habit landed cleanly. Seeded a failure (added Focused to datalist only, missing moods data and themes). Ben gave a thorough three-part prediction, tested it, caught the failure immediately and described it clearly. Second attempt matched prediction. Good instincts throughout.
 
 - [ ] **Step 6 — Git as a safety net (local commits)**
   Notes:
@@ -83,4 +83,4 @@ Session 3 complete. Steps 1–4 done. Next: Step 5 — Reviewing AI output criti
 
 - **Session 1 — 2026-06-09:** Diagnostic complete. Ben: childhood DOS/QBasic, interests in music/photography/comedy, wants to build a website and VST plugins. Step 1 nailed first time — great instinct on the review beat. Step 2 in progress: built mood-music.html, Ben typed his own first prompt and gave sharp iterative feedback (added moods, random genre pools, colour theming). Good session — confident start.
 - **Session 2 — 2026-06-10:** Steps 2 and 3 complete, plus extra polish on mood-music.html. Combined input/dropdown into datalist, rule-of-thirds layout, Jamendo API with perpetual playlist engine (auto-advances, pre-fetches, next → skip button), light/dark theme with browser-preference detection and manual toggle, heading contrast fix, clears input on focus. Step 3: all four prompting principles landed cleanly — Ben rewrote the original brief from scratch and produced a genuinely strong one. Ready for Step 4 (working with files).
-- **Session 3 — 2026-06-10:** Step 4 complete. File/folder mental model landed quickly. Ben described the visibility boundary in his own words without prompting. Used @ twice himself — once to describe the file, once to request a specific change (random playlist start position). Narrate-then-edit cycle smooth; read the plain-English summary and confirmed before the change ran. Ready for Step 5 (reviewing AI output critically).
+- **Session 3 — 2026-06-10:** Steps 4 and 5 complete. File/folder mental model landed quickly. Ben described the visibility boundary in his own words. Used @ twice himself. Predict-then-check: seeded failure (incomplete Focused mood), Ben caught it immediately and described it clearly. Fixed it together. Ready for Step 6 (git as a safety net).
