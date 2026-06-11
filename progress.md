@@ -75,8 +75,8 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
   Notes: First version recovered from git history (9607fbd), saved as first-version.html. Ben observed immediately: dark colour scheme was right first time; the design shifted from "fun toy" to "something people might use" through specific additions (combined input/dropdown, multiple genres per mood, Jamendo audio). Named two things that changed in how he works: gets much more specific upfront now, and understands that iteration is how you find the thing you didn't know you wanted. Both correct and complementary. Rubric met.
 
 - [ ] **Step 10b — The real project**
-  Project idea: VST plugin / website that represents Ben
-  Notes:
+  Project idea: Git Fiddler — standalone low-latency guitar processing app (JUCE/C++)
+  Notes: Audio passthrough working. Setup window built (JUCE AudioDeviceSelectorComponent + guitar input channel selector). Signal routing: selected mono input → stereo output. ASIO driver (PreSonus Universal Control) installed but needs reboot to activate — paused here. Repo at C:\Users\smash\Documents\git-fiddler.
 
 ### On-demand topics (filled in if/when they come up)
 
