@@ -68,8 +68,8 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - [x] **Step 8 — Planning before building**
   Notes: Planned Git Fiddler — a standalone low-latency guitar processing app. Ben described the problem clearly before the solution. Signal chain: pre-IR VST bank (3 slots) → IR loader with inline browser → post-IR VST bank (3 slots). Tuner taps input. Tech: JUCE/C++. Ben answered all three blocking questions unprompted and refined the design (two banks split at IR). plan.md written and pushed.
 
-- [ ] **Step 9 — Troubleshooting and recovery**
-  Notes:
+- [x] **Step 9 — Troubleshooting and recovery**
+  Notes: Key move landed immediately — "I wanted to tell you what happened and ask you to fix it." Knew instinctively that fixing happens through prompts, not by opening files. All five troubleshooting prompts taught. Ben then used two of them unprompted on a real bug (@ to point at the file, named the gap: "expected both genres, only first plays"). Investigated, fixed (split all combined genre entries into separate ones with unique descriptions), verified. Full loop in one go.
 
 - [ ] **Step 10a — Remake the tiny build (the bookend)**
   Notes:
@@ -87,3 +87,4 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - **Session 1 — 2026-06-09:** Diagnostic complete. Ben: childhood DOS/QBasic, interests in music/photography/comedy, wants to build a website and VST plugins. Step 1 nailed first time — great instinct on the review beat. Step 2 in progress: built mood-music.html, Ben typed his own first prompt and gave sharp iterative feedback (added moods, random genre pools, colour theming). Good session — confident start.
 - **Session 2 — 2026-06-10:** Steps 2 and 3 complete, plus extra polish on mood-music.html. Combined input/dropdown into datalist, rule-of-thirds layout, Jamendo API with perpetual playlist engine (auto-advances, pre-fetches, next → skip button), light/dark theme with browser-preference detection and manual toggle, heading contrast fix, clears input on focus. Step 3: all four prompting principles landed cleanly — Ben rewrote the original brief from scratch and produced a genuinely strong one. Ready for Step 4 (working with files).
 - **Session 3 — 2026-06-10:** Steps 4–7 complete. File/folder mental model landed quickly. Ben described the visibility boundary in his own words. Used @ twice himself. Predict-then-check: seeded failure (incomplete Focused mood), Ben caught it immediately. Git: showed log, demonstrated undo, Ben described it accurately. GitHub: account created (SmashyBen), repo pushed, Becky invited. Commit vs push clarified. Ready for Step 8 (planning before building).
+- **Session 4 — 2026-06-11:** Steps 8 and 9 complete. Step 8 done last session (Git Fiddler plan). Step 9: troubleshooting toolkit taught, Ben applied it immediately to a real bug — combined genre entries in mood-music.html only ever played the first genre. Spotted it himself, wrote a strong troubleshooting prompt using @ and gap-naming. Fixed by splitting all combined genres into individual entries with unique descriptions. Full recovery loop completed.
