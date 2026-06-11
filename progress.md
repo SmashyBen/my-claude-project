@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-09
-- **Last updated:** 2026-06-10
+- **Last updated:** 2026-06-11
 - **Curriculum version:** v1
 
 ---
@@ -24,7 +24,7 @@
 
 ## Where I am right now
 
-Session 3 complete. Steps 1–8 done. Next: Step 9 — Troubleshooting and recovery.
+Session 4 complete. Steps 1–9 done. Next: Step 10a — The look-back (the bookend).
 Mood-music page live at: https://smashyben.github.io/my-claude-project/step-2/mood-music.html
 Repo public at: https://github.com/SmashyBen/my-claude-project
 
