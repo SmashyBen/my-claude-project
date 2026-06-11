@@ -24,7 +24,7 @@
 
 ## Where I am right now
 
-Session 4 complete. Steps 1–9 done. Next: Step 10a — The look-back (the bookend).
+Session 5 in progress. Steps 1–10a done. Next: Step 10b — the real project.
 Mood-music page live at: https://smashyben.github.io/my-claude-project/step-2/mood-music.html
 Repo public at: https://github.com/SmashyBen/my-claude-project
 
@@ -71,8 +71,8 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - [x] **Step 9 — Troubleshooting and recovery**
   Notes: Key move landed immediately — "I wanted to tell you what happened and ask you to fix it." Knew instinctively that fixing happens through prompts, not by opening files. All five troubleshooting prompts taught. Ben then used two of them unprompted on a real bug (@ to point at the file, named the gap: "expected both genres, only first plays"). Investigated, fixed (split all combined genre entries into separate ones with unique descriptions), verified. Full loop in one go.
 
-- [ ] **Step 10a — Remake the tiny build (the bookend)**
-  Notes:
+- [x] **Step 10a — Remake the tiny build (the bookend)**
+  Notes: First version recovered from git history (9607fbd), saved as first-version.html. Ben observed immediately: dark colour scheme was right first time; the design shifted from "fun toy" to "something people might use" through specific additions (combined input/dropdown, multiple genres per mood, Jamendo audio). Named two things that changed in how he works: gets much more specific upfront now, and understands that iteration is how you find the thing you didn't know you wanted. Both correct and complementary. Rubric met.
 
 - [ ] **Step 10b — The real project**
   Project idea: VST plugin / website that represents Ben
