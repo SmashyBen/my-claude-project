@@ -24,7 +24,7 @@
 
 ## Where I am right now
 
-Session 5 in progress. Steps 1–10a done. Next: Step 10b — the real project.
+Session 5 complete. Steps 1–10a done. Step 10b started: Git Fiddler project created and building. Next: audio passthrough.
 Mood-music page live at: https://smashyben.github.io/my-claude-project/step-2/mood-music.html
 Repo public at: https://github.com/SmashyBen/my-claude-project
 
@@ -88,3 +88,4 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - **Session 2 — 2026-06-10:** Steps 2 and 3 complete, plus extra polish on mood-music.html. Combined input/dropdown into datalist, rule-of-thirds layout, Jamendo API with perpetual playlist engine (auto-advances, pre-fetches, next → skip button), light/dark theme with browser-preference detection and manual toggle, heading contrast fix, clears input on focus. Step 3: all four prompting principles landed cleanly — Ben rewrote the original brief from scratch and produced a genuinely strong one. Ready for Step 4 (working with files).
 - **Session 3 — 2026-06-10:** Steps 4–7 complete. File/folder mental model landed quickly. Ben described the visibility boundary in his own words. Used @ twice himself. Predict-then-check: seeded failure (incomplete Focused mood), Ben caught it immediately. Git: showed log, demonstrated undo, Ben described it accurately. GitHub: account created (SmashyBen), repo pushed, Becky invited. Commit vs push clarified. Ready for Step 8 (planning before building).
 - **Session 4 — 2026-06-11:** Steps 8 and 9 complete. Step 8 done last session (Git Fiddler plan). Step 9: troubleshooting toolkit taught, Ben applied it immediately to a real bug — combined genre entries in mood-music.html only ever played the first genre. Spotted it himself, wrote a strong troubleshooting prompt using @ and gap-naming. Fixed by splitting all combined genres into individual entries with unique descriptions. Full recovery loop completed.
+- **Session 5 — 2026-06-11:** Step 10a complete — first-version.html recovered from git history, compared side by side with current. Ben named what changed clearly (usability, multiple genres, audio) and identified two shifts in how he works: more specific upfront, and understands iteration as a discovery tool. Step 10b started: Visual Studio and JUCE installed, Git Fiddler project created and building (blank window confirmed). Hit a modules path issue on first attempt — fixed by setting Projucer Global Paths before recreating the project. Repo at C:\Users\smash\Documents\git-fiddler. Next: audio passthrough.
