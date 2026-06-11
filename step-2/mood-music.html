@@ -309,14 +309,16 @@
 
     const moods = {
       happy: [
-        { genre: "Neo-Soul / Funk", vibe: "Warm basslines, bright horns, and vocals that feel like a smile. Music that moves your body before your brain catches up. Think Stevie Wonder meeting modern-day Lizzo — joyful without being saccharine." },
+        { genre: "Neo-Soul", vibe: "Warm harmonies, deeply human production, and vocals that treat every phrase like it matters. Not quite R&B, not quite jazz — something that landed between them and didn't need to explain itself. Intimate, intelligent, and deeply felt." },
+        { genre: "Funk", vibe: "Deep pocket grooves built around the one-beat, bass that sits low in the mix and drives everything else. Joy as a physical experience — you don't decide to move, you just do. Music that knows exactly what it's doing." },
         { genre: "Disco / Dance-Pop", vibe: "Glittering production, four-on-the-floor rhythms, and melodies built to make strangers dance together. Unashamedly euphoric — the kind of music that makes a Tuesday feel like a Saturday night." },
         { genre: "Afrobeats", vibe: "Polyrhythmic percussion, warm synths, and an irresistible forward momentum. Music that carries sunshine in its DNA. It doesn't ask you to be happy — it just makes it happen." }
       ],
       chill: [
         { genre: "Lo-Fi Hip-Hop", vibe: "Dusty samples, slow beats with a slight wobble, rain sounds in the background. The musical equivalent of a warm drink and nowhere to be. Perfect for late afternoons when time moves slowly." },
         { genre: "Chillwave", vibe: "Hazy synths, distant vocals soaked in reverb, melodies that drift like smoke. It exists somewhere between nostalgia and contentment. Not quite awake, not quite asleep — just floating." },
-        { genre: "Nu-Jazz / Downtempo", vibe: "Brushed drums, wandering bass, horns that feel unhurried. Like jazz slowed down to a resting heart rate. Music that makes a room feel comfortable just by being in it." }
+        { genre: "Nu-Jazz", vibe: "Jazz harmony meeting electronic texture — live drums sitting next to programmed beats, acoustic instruments dissolving into loops. Sophisticated and unhurried. Music that treats your attention as something worth respecting." },
+        { genre: "Downtempo", vibe: "Slow BPMs, layers of texture, beats that drift rather than drive. Electronic but warm, distant but comfortable. The sonic equivalent of late afternoon — nowhere to be, nothing urgent." }
       ],
       relaxed: [
         { genre: "Acoustic Soul", vibe: "Soft fingerpicked guitar, warm close-mic'd vocals, nothing crowding the space. Music that breathes. It asks nothing of you — just invites you to settle." },
@@ -324,12 +326,14 @@
         { genre: "Bossa Nova", vibe: "Nylon strings, quiet brushwork, melodies that sway rather than march. A Brazilian invention that somehow sounds like every relaxed afternoon you've ever had." }
       ],
       melancholy: [
-        { genre: "Sad Indie / Chamber Pop", vibe: "Strings that ache, vocals that sit just above a whisper. Music for staring out of windows. Beautiful in a way that almost hurts — the kind of sound that makes sadness feel worth feeling." },
+        { genre: "Sad Indie", vibe: "Confessional lyrics, guitars that feel a little worn, voices that don't try to sound polished. Music made close to the bone — you can feel the room it was recorded in. Honest in a way that commercial sadness rarely is." },
+        { genre: "Chamber Pop", vibe: "Orchestral arrangements wrapped around indie songwriting — strings, piano, woodwinds doing the emotional work that distortion usually does. Sad made beautiful. Music that treats the feeling as worth decorating." },
         { genre: "Slowcore", vibe: "Long pauses, sparse arrangements, guitars that drag like heavy weather. Music that doesn't rush grief. It sits with you rather than trying to fix you." },
         { genre: "Post-Rock", vibe: "Instrumental arcs that build from nothing into something enormous — then fall back to silence. Emotional without a word being said. Music that mirrors the shape of a feeling, not the words for it." }
       ],
       angry: [
-        { genre: "Hardcore / Industrial Metal", vibe: "Heavy, abrasive, relentless. Guitars that sound like something tearing. The volume is the point — it meets anger where it lives and turns it into something physical." },
+        { genre: "Hardcore", vibe: "Fast, blunt, short. Songs that don't outstay their welcome because they're moving too fast to stop. Pure confrontational energy — volume and velocity as catharsis. No solos, no fuss, just impact." },
+        { genre: "Industrial Metal", vibe: "Machinery made musical — mechanical rhythms, distorted noise, a controlled sense of something massive and threatening. The anger here is cold rather than hot. Deliberate, heavy, oppressive in the best way." },
         { genre: "Death Metal", vibe: "Blast beats, down-tuned guitars, vocals that sound inhuman. Technically precise chaos. It doesn't ask you to calm down — it validates every jagged edge of how you feel." },
         { genre: "Noise Rock", vibe: "Feedback, distortion, structures that collapse on purpose. The opposite of pleasant. It sounds like something breaking — which is sometimes exactly the right sound." }
       ],
@@ -339,64 +343,80 @@
         { genre: "Dark Ambient", vibe: "Sustained drones, deep reverb, the sense of a large room. Unexpectedly calming — it makes the unease feel intentional, like it belongs to the sound rather than to you." }
       ],
       restless: [
-        { genre: "Post-Punk / Art Rock", vibe: "Angular, nervy, always about to go somewhere else. This music can't sit still either. Perfect for pacing the room or the inside of your own head." },
+        { genre: "Post-Punk", vibe: "Angular guitars, driving bass, rhythms that push rather than groove. Reaction against punk's simplicity — smarter, stranger, still urgent. Music that can't sit still because it keeps asking questions." },
+        { genre: "Art Rock", vibe: "Theatrical, conceptual, unconcerned with convention. More likely to change direction mid-song than commit to a single mood. Intelligent, sometimes unsettling, always doing something you didn't expect." },
         { genre: "Math Rock", vibe: "Shifting time signatures, interlocking guitar patterns, forward propulsion that never quite settles. Technically restless — music that doesn't know how to stop moving." },
         { genre: "Krautrock", vibe: "Motorik rhythms that drive forward relentlessly, hypnotic and slightly unhinged. Built for movement, for driving, for the feeling that you need to be somewhere else but don't know where." }
       ],
       romantic: [
-        { genre: "Bossa Nova / Soft Jazz", vibe: "Gentle nylon-string guitars, hushed brushed drums, voices that feel intimate. Music that makes a small room feel like the only place in the world. Sophisticated without being cold." },
-        { genre: "R&B / Contemporary Soul", vibe: "Lush production, harmonies stacked like architecture, lyrics that don't flinch from feeling. Music built for closeness — for slow dances and late nights." },
+        { genre: "Bossa Nova", vibe: "Nylon strings, quiet brushwork, melodies that sway rather than march. Music that makes a small room feel like the only place in the world. Sophisticated without being cold." },
+        { genre: "Soft Jazz", vibe: "Muted trumpet, piano that wanders gently, rhythms you barely notice. Music for dim rooms and close company. Not jazz trying to be impressive — jazz trying to be comfortable." },
+        { genre: "R&B", vibe: "Lush production, deep low end, harmonies stacked like architecture. Lyrics built around closeness. Music that understands want — and knows exactly how to soundtrack it." },
+        { genre: "Contemporary Soul", vibe: "The emotional directness of soul filtered through modern production. Less gospel, more personal — confessional rather than communal. Voice-forward, feeling-first." },
         { genre: "Dream Pop", vibe: "Shimmering guitars, breathy vocals, reverb that makes everything feel soft-focused. Like a romantic moment remembered rather than happening. Tender and a little unreal." }
       ],
       nostalgic: [
-        { genre: "Classic Soul / Motown", vibe: "Warm lo-fi warmth, call-and-response vocals, melodies you feel like you already know. It sounds like a memory — even of something you never experienced. Lush, human, timeless." },
+        { genre: "Classic Soul", vibe: "The raw, gospel-rooted voice of the 1960s–70s — Southern heat, Detroit grit, Chicago cool. Deep feeling, direct delivery. Music that means every word." },
+        { genre: "Motown", vibe: "The sleek, produced pop-soul of the Berry Gordy era — three-minute perfection, brilliant string arrangements, hooks built to last decades. Pop music that happened to have soul." },
         { genre: "Synth-Pop (80s)", vibe: "Gated drums, bright synthesisers, big choruses. The sound of a decade confident in its own future. Nostalgic even if you weren't there — and crushing if you were." },
         { genre: "Indie Rock (90s)", vibe: "Distorted guitars, anthemic choruses, production that sounds slightly worn. Music that remembers being young and not knowing it was the best part. Bittersweet in the best way." }
       ],
       confident: [
-        { genre: "Hip-Hop / Trap", vibe: "Rolling 808 bass, crisp hi-hats, lyrics built from swagger. Music that assumes the room is already yours. Best played loudly, preferably walking somewhere." },
-        { genre: "Funk / G-Funk", vibe: "Deep groove, laid-back delivery, hooks that don't need to try hard because they already know they're good. Music that wears its confidence lightly — and somehow that makes it more." },
+        { genre: "Hip-Hop", vibe: "Rolling rhythms, lyrical precision, the art of making something from very little. Confidence delivered as craft. Swagger earned through the quality of what's actually being said." },
+        { genre: "Trap", vibe: "808 bass that fills a room from the bottom up, hi-hats that scatter like rain, production that feels cinematic before a word's been said. Music that assumes you already belong here." },
+        { genre: "Funk", vibe: "Deep pocket grooves, bass driving everything, tight rhythms built to make the body respond before the brain does. Confidence worn lightly — the music already knows it's good." },
+        { genre: "G-Funk", vibe: "West Coast ease over thick synth lines and loping beats. Laid-back in a way that only reads as confident if you're paying attention. Music that moves slowly because it has nowhere to rush to." },
         { genre: "Arena Rock", vibe: "Stadium-sized guitar riffs, massive choruses, production built to fill a space ten times bigger than you're in. Music that makes you feel like the main character." }
       ],
       lonely: [
-        { genre: "Singer-Songwriter / Folk", vibe: "One voice, one instrument, a lot of space. It doesn't try to fix the loneliness — it just acknowledges it without flinching. There's a strange comfort in feeling understood by a song." },
+        { genre: "Singer-Songwriter", vibe: "One voice, one instrument, a lot of space. Music made alone — and somehow that's what makes it feel like company. Specific and personal enough to feel universal." },
+        { genre: "Folk", vibe: "Songs built to be passed between people — simple enough to remember, honest enough to last. Stories about real things. Music that carries the weight of the people who made it before." },
         { genre: "Indie Folk", vibe: "Quiet harmonies, sparse arrangements, lyrics about distance and disconnection. Music that was made alone — and somehow that makes it feel less lonely to listen to." },
         { genre: "Blues", vibe: "Call-and-response, bent notes, the weight of experience in every phrase. The oldest music for this feeling. It doesn't offer solutions — just the knowledge that this is a human thing, and it has been for a long time." }
       ],
       energetic: [
-        { genre: "House / Dance", vibe: "Four-on-the-floor kick drums, synths that build and release, tracks designed to make bodies move together. This is music as physical experience — the architecture of a good night out." },
+        { genre: "House", vibe: "Four-on-the-floor kick, synths that build pressure and release it, tracks designed to make strangers move together. Euphoric without apology. The architecture of a good night." },
+        { genre: "Dance", vibe: "Pure momentum — production built to sustain a state rather than tell a story. Music that isn't asking you to think about it. Just: move." },
         { genre: "Drum and Bass", vibe: "170BPM breakbeats, sub-bass that rattles windows, relentless forward momentum. Music that outpaces thought. You don't listen to DnB — it carries you." },
-        { genre: "Punk / Hardcore", vibe: "Fast, loud, no wasted notes. The energy of something about to explode contained in three minutes. It doesn't build up — it's already at full power from the first second." }
+        { genre: "Punk", vibe: "Fast, loud, no wasted notes. Energy as a statement. The riff is the argument — everything else is noise getting in the way. Three minutes and it's already over." },
+        { genre: "Hardcore", vibe: "Faster than punk, heavier, shorter. Songs that treat any pause as weakness. Full power from the first second — and gone before you've had time to consider whether you were ready." }
       ],
       peaceful: [
-        { genre: "Modern Classical / Minimalist", vibe: "Sparse piano, slow harmonic movement, long silences that feel intentional. Music with no urgency. It creates space in your head rather than filling it." },
+        { genre: "Modern Classical", vibe: "Contemporary composition for acoustic instruments — strings, piano, chamber ensembles — with a harmonic language that sits between tradition and innovation. Serious, still, and deeply unhurried." },
+        { genre: "Minimalist", vibe: "Slow repetition, tiny variations, music that changes so gradually you barely notice it moving. The opposite of demanding. It removes clutter from your head just by being there." },
         { genre: "Ambient", vibe: "Brian Eno invented this for airports but it belongs in gardens, in early mornings, in the moment before sleep. Sound that exists without demanding to be listened to." },
         { genre: "Japanese City Pop", vibe: "Smooth, immaculately produced, unhurried. Music that sounds like a city at night from a height — all the activity made small and beautiful by distance." }
       ],
       dark: [
-        { genre: "Dark Ambient / Gothic", vibe: "Drones, deep reverbs, sounds at the edge of music. Something ancient and slightly unsettling — like standing in a very large empty building at night. Not scary, but aware." },
+        { genre: "Dark Ambient", vibe: "Sustained drones, deep reverbs, sounds at the edge of music. Something ancient and slightly unsettling — like standing in a very large empty building at night. Not scary, but aware." },
+        { genre: "Gothic", vibe: "Swelling drama, cathedral reverb, voices that treat darkness as beautiful rather than frightening. Music that aestheticises the night. Romantic in the oldest, strangest sense of the word." },
         { genre: "Black Metal (Atmospheric)", vibe: "Tremolo guitars that blur into texture, blast beats that dissolve into ambience, a vastness that feels cosmic. Music for staring into the dark and finding it stares back — calmly." },
         { genre: "Industrial", vibe: "Mechanical rhythms, harsh textures, sounds that weren't made to be comfortable. Music that takes the darkness seriously. Confrontational, but honest." }
       ],
       hopeful: [
-        { genre: "Indie Folk / Dreamy Pop", vibe: "Open guitar chords, vocals that reach upward, production that sounds like morning light. It doesn't pretend things are fine — it just insists they might be. Gentle and earnest." },
+        { genre: "Indie Folk", vibe: "Open chords and honest voices, production that doesn't try to hide the room. Music that earns hopefulness rather than asserting it. Small sounds carrying large feelings." },
+        { genre: "Dreamy Pop", vibe: "Shimmering production, melodies that seem to float slightly above the beat. Optimism rendered as texture — hope made into sound without being named." },
         { genre: "Gospel / Gospel Soul", vibe: "Voices stacked into something bigger than their parts, music that believes in the future with its whole chest. Even secular ears feel the lift. It's permission to want better." },
         { genre: "Post-Rock (Uplifting)", vibe: "Instrumental builds that rise slowly and arrive somewhere enormous. No lyrics needed — the arc is the message. Music that sounds like something beginning." }
       ],
       numb: [
-        { genre: "Shoegaze / Dream Pop", vibe: "Guitars buried in reverb, vocals half-dissolved into the mix, rhythms that drift. Music that doesn't demand anything from you. You can float inside it without having to feel." },
-        { genre: "Drone / Ambient", vibe: "Single sustained tones, almost no movement, sound as texture rather than melody. It fills space without interrupting it. For when you don't want music to do anything to you." },
+        { genre: "Shoegaze", vibe: "Guitars buried so deep in reverb they become a wall of texture. Vocals half-dissolved into the mix. Music that surrounds you without demanding anything. A place to be inside, not a performance to watch." },
+        { genre: "Dream Pop", vibe: "Shimmering, soft, slightly out-of-focus. Music that exists at the threshold of feeling — close enough to emotion to register, distant enough not to hurt. Beautiful without insisting on it." },
+        { genre: "Drone", vibe: "Single sustained tones that shift almost imperceptibly. No melody to follow, no rhythm to track. Sound as environment — it fills space without needing to do anything else." },
+        { genre: "Ambient", vibe: "Textures that fill without intruding, sound designed to exist at the edge of attention. Music that doesn't want anything from you. It's just there, holding the room quietly." },
         { genre: "Trip-Hop", vibe: "Slow hip-hop beats, jazz samples, vocals delivered like dispatches from somewhere distant. Music from the grey space between moods. Portishead. Massive Attack. The sound of dissociation made beautiful." }
       ],
       rebellious: [
-        { genre: "Punk / Garage Rock", vibe: "Fast, loud, deliberately rough around the edges. This music doesn't want to be polished — the rawness is the statement. Three chords and the truth. Energy over precision, always." },
+        { genre: "Punk", vibe: "Raw, fast, three chords and the truth. Not interested in being polished. The roughness is part of the argument. Energy over precision, always." },
+        { genre: "Garage Rock", vibe: "Fuzzed-out guitars, reverb-soaked vocals, recordings that sound like a room. Rawer than rock, less ideological than punk. Music that simply cannot be bothered to be tidy." },
         { genre: "Riot Grrrl", vibe: "Angry, feminist, deliberately uncomfortable for the right ears. Music made by people who were told to be quieter and turned the amps up instead. Political without losing the riff." },
         { genre: "Oi! / Street Punk", vibe: "Singalong choruses and complete contempt for authority. Working class, blunt, alive. Music that doesn't dress up its anger — it puts its boots on." }
       ],
       focused: [
         { genre: "Lo-Fi Hip-Hop", vibe: "Dusty beats, gentle crackle, no lyrics to pull your attention sideways. The musical equivalent of a clear desk — just enough texture to stop the silence feeling empty, not enough to distract." },
         { genre: "Minimal Electronic", vibe: "Repeating patterns, slow evolution, no sudden surprises. Music that creates a groove and stays in it. Your brain locks onto the rhythm and the rest of the thinking gets easier." },
-        { genre: "Modern Classical / Minimalist", vibe: "Solo piano or sparse strings, long pauses, harmonies that don't demand attention. Music that clears space in your head rather than filling it. The sound of a room you can actually think in." }
+        { genre: "Modern Classical", vibe: "Solo piano or sparse strings, long pauses, harmonies that don't demand attention. Music that clears space in your head rather than filling it. The sound of a room you can actually think in." },
+        { genre: "Minimalist", vibe: "Patterns that repeat and slowly evolve — music that rewards not paying close attention to it. It anchors just enough of your brain to quiet the rest." }
       ]
     };
 
@@ -421,56 +441,66 @@
     let currentAudio = null;
 
     const genreTags = {
-      "Neo-Soul / Funk":             "funk",
+      "Neo-Soul":                    "soul",
+      "Funk":                        "funk",
       "Disco / Dance-Pop":           "disco",
       "Afrobeats":                   "afrobeat",
       "Lo-Fi Hip-Hop":               "lofi",
       "Chillwave":                   "chillwave",
-      "Nu-Jazz / Downtempo":         "downtempo",
+      "Nu-Jazz":                     "jazz",
+      "Downtempo":                   "downtempo",
       "Acoustic Soul":               "soul",
       "Ambient Folk":                "folk",
       "Bossa Nova":                  "bossanova",
-      "Sad Indie / Chamber Pop":     "indie",
+      "Sad Indie":                   "indie",
+      "Chamber Pop":                 "pop",
       "Slowcore":                    "indie",
       "Post-Rock":                   "postrock",
-      "Hardcore / Industrial Metal": "metal",
+      "Hardcore":                    "punk",
+      "Industrial Metal":            "metal",
       "Death Metal":                 "deathmetal",
       "Noise Rock":                  "rock",
       "Ambient Electronic":          "ambient",
       "Modern Classical":            "classical",
       "Dark Ambient":                "darkambient",
-      "Post-Punk / Art Rock":        "postpunk",
+      "Post-Punk":                   "postpunk",
+      "Art Rock":                    "rock",
       "Math Rock":                   "mathrock",
       "Krautrock":                   "rock",
-      "Bossa Nova / Soft Jazz":      "bossanova",
-      "R&B / Contemporary Soul":     "rnb",
+      "Soft Jazz":                   "jazz",
+      "R&B":                         "rnb",
+      "Contemporary Soul":           "soul",
       "Dream Pop":                   "dreampop",
-      "Classic Soul / Motown":       "soul",
+      "Classic Soul":                "soul",
+      "Motown":                      "soul",
       "Synth-Pop (80s)":             "synthpop",
       "Indie Rock (90s)":            "indie",
-      "Hip-Hop / Trap":              "hiphop",
-      "Funk / G-Funk":               "funk",
+      "Hip-Hop":                     "hiphop",
+      "Trap":                        "hiphop",
+      "G-Funk":                      "funk",
       "Arena Rock":                  "rock",
-      "Singer-Songwriter / Folk":    "folk",
+      "Singer-Songwriter":           "folk",
+      "Folk":                        "folk",
       "Indie Folk":                  "folk",
       "Blues":                       "blues",
-      "House / Dance":               "house",
+      "House":                       "house",
+      "Dance":                       "dance",
       "Drum and Bass":               "drumandbass",
-      "Punk / Hardcore":             "punk",
-      "Modern Classical / Minimalist": "classical",
+      "Punk":                        "punk",
+      "Minimalist":                  "classical",
       "Ambient":                     "ambient",
       "Japanese City Pop":           "pop",
-      "Dark Ambient / Gothic":       "darkambient",
+      "Gothic":                      "gothic",
       "Black Metal (Atmospheric)":   "blackmetal",
       "Industrial":                  "industrial",
-      "Indie Folk / Dreamy Pop":     "folk",
+      "Dreamy Pop":                  "dreampop",
       "Gospel / Gospel Soul":        "gospel",
       "Post-Rock (Uplifting)":       "postrock",
-      "Shoegaze / Dream Pop":        "shoegaze",
-      "Drone / Ambient":             "drone",
+      "Shoegaze":                    "shoegaze",
+      "Drone":                       "drone",
       "Minimal Electronic":          "electronic",
       "Trip-Hop":                    "triphop",
-      "Punk / Garage Rock":          "punk",
+      "Garage Rock":                 "rock",
       "Riot Grrrl":                  "punk",
       "Oi! / Street Punk":           "punk",
     };
