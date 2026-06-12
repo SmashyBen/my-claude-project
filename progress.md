@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-09
-- **Last updated:** 2026-06-12
+- **Last updated:** 2026-06-12 (session 10)
 - **Curriculum version:** v1
 
 ---
@@ -74,9 +74,9 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - [x] **Step 10a — Remake the tiny build (the bookend)**
   Notes: First version recovered from git history (9607fbd), saved as first-version.html. Ben observed immediately: dark colour scheme was right first time; the design shifted from "fun toy" to "something people might use" through specific additions (combined input/dropdown, multiple genres per mood, Jamendo audio). Named two things that changed in how he works: gets much more specific upfront now, and understands that iteration is how you find the thing you didn't know you wanted. Both correct and complementary. Rubric met.
 
-- [ ] **Step 10b — The real project**
+- [x] **Step 10b — The real project**
   Project idea: Git Fiddler — standalone low-latency guitar processing app (JUCE/C++)
-  Notes: Full signal chain working: 3 pre-IR VST3 slots → IR convolution → 3 post-IR VST3 slots. ASIO at 128 samples (~3ms). IR loader: FileBrowserComponent right panel, double-click .wav. VST3 slots: category picker, auto-open UI on load, plugin list cached to AppData/SmashBox/knownPlugins.xml (instant startup), Rescan button. PluginSlotComponent is self-contained (owns instance, window, lock). Tuner built: TunerComponent with autocorrelation pitch detection. Metronome with BPM/time sig/click vol/spacebar. Amber/charcoal theme via GitFiddlerLookAndFeel. App renamed Smash Box. Backing track player built: AudioTransportSource (JUCE native, low-latency, works at 128-sample ASIO buffer), open/play/seek/volume, pinned to bottom of window. Level meters smoothed (60Hz, asymmetric attack/decay). BPM slider wheel steps 1 BPM. **App considered complete by Ben.**
+  Notes: Full signal chain working: 3 pre-IR VST3 slots → IR convolution → 3 post-IR VST3 slots. ASIO at 128 samples (~3ms). IR loader: FileBrowserComponent right panel, double-click .wav. VST3 slots: category picker, auto-open UI on load, plugin list cached to AppData/SmashBox/knownPlugins.xml (instant startup), Rescan button. PluginSlotComponent is self-contained (owns instance, window, lock). Tuner built: TunerComponent with autocorrelation pitch detection. Metronome with BPM/time sig/click vol/spacebar. Amber/charcoal theme via GitFiddlerLookAndFeel. App renamed Smash Box. Backing track player built: AudioTransportSource (JUCE native, low-latency, works at 128-sample ASIO buffer), open/play/seek/volume, pinned to bottom of window. Level meters smoothed (60Hz, asymmetric attack/decay). BPM slider wheel steps 1 BPM. Session 10: UI polished to StudioLive-style (backlit buttons with ambient glow, LED segment meters, knurled fader caps, 3D panel depth). Release build + Inno Setup installer created — SmashBoxSetup.exe ships the app. **Complete.**
 
 ### On-demand topics (filled in if/when they come up)
 
@@ -93,3 +93,4 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - **Session 7 — 2026-06-12:** ASIO confirmed (required ASIO SDK + Projucer flag + JUCE_ASIO module option). IR loader built (FileBrowserComponent, juce_dsp Convolution). VST3 hosting built: category picker, plugin loads with auto UI open, plugin list cached. Full 3+3 slot banks complete — PluginSlotComponent self-contained class, full signal chain working. Next: tuner.
 - **Session 8 — 2026-06-12:** Bug fixes: Rescan visual indicator ("Scanning..." button text), VST scan crash recovery via dead man's pedal (bad plugins auto-skipped + named on next startup), settings dialog double-open guard. Audio device settings now persist across restarts (AudioDeviceManager save/restore via XML). Tuner built: TunerComponent, autocorrelation pitch detection, 660 Hz low-pass filter, needle gauge with colour coding. Still some harmonic bleed at 660 Hz — to investigate next session.
 - **Session 9 — 2026-06-12:** UI polish and new features. Tuner harmonic issue investigated (improved low-pass). Metronome added: BPM/time signature, beat flash dot (amber on beat 1), click volume slider, spacebar toggle. Compact 300px right panel alongside tuner. Amber/charcoal theme (GitFiddlerLookAndFeel applied globally). App renamed to Smash Box. Backing track player built using JUCE AudioTransportSource (background read-ahead thread, clean at 128-sample ASIO buffer). Open/play/seek scrub bar/volume. Player pinned to bottom of window. Level meters smoothed (60Hz, fast attack/slow decay). BPM slider mouse wheel now steps 1 BPM. App considered complete by Ben.
+- **Session 10 — 2026-06-12:** UI depth pass + installer. Added 3D dimensionality to buttons/sliders/panels (gradients, bevel edges). Then full StudioLive-style rework: backlit buttons with radial amber glow + ambient spill onto surrounding panel, LED segment meters with bloom, wider knurled fader caps. Release build compiled (7 MB). Inno Setup installer created — SmashBoxSetup.exe (21.5 MB, bundles VC++ Redistributable). Installer tested and confirmed working. Step 10b marked complete.
