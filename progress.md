@@ -76,7 +76,7 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 
 - [ ] **Step 10b — The real project**
   Project idea: Git Fiddler — standalone low-latency guitar processing app (JUCE/C++)
-  Notes: Audio passthrough working. Setup window built (JUCE AudioDeviceSelectorComponent + guitar input channel selector). Signal routing: selected mono input → stereo output. ASIO working — required ASIO SDK at C:\SDKs\ASIOSDK, /IC:\SDKs\ASIOSDK\common in Projucer Extra Compiler Flags, and JUCE_ASIO enabled in juce_audio_devices module config. 128 samples minimum with ASIO (~3ms). IR loader built: FileBrowserComponent on right panel (300px), juce_dsp Convolution, double-click .wav to load, loaded filename shown in label. Next: VST plugin banks (pre-IR and post-IR, 3 slots each).
+  Notes: Audio passthrough working. Setup window built (JUCE AudioDeviceSelectorComponent + guitar input channel selector). Signal routing: selected mono input → stereo output. ASIO working — required ASIO SDK at C:\SDKs\ASIOSDK, /IC:\SDKs\ASIOSDK\common in Projucer Extra Compiler Flags, and JUCE_ASIO enabled in juce_audio_devices module config. 128 samples minimum with ASIO (~3ms). IR loader built: FileBrowserComponent on right panel (300px), juce_dsp Convolution, double-click .wav to load. VST3 plugin slot working: category picker dialog, plugin loads and UI opens automatically, audio routes through plugin before IR. Plugin list cached to AppData/GitFiddler/knownPlugins.xml (instant subsequent startups), Rescan button for new installs. Next: expand to full 3+3 slot banks (pre-IR and post-IR).
 
 ### On-demand topics (filled in if/when they come up)
 
