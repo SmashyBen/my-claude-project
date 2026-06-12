@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-09
-- **Last updated:** 2026-06-11
+- **Last updated:** 2026-06-12
 - **Curriculum version:** v1
 
 ---
@@ -76,7 +76,7 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 
 - [ ] **Step 10b — The real project**
   Project idea: Git Fiddler — standalone low-latency guitar processing app (JUCE/C++)
-  Notes: Full signal chain working: 3 pre-IR VST3 slots → IR convolution → 3 post-IR VST3 slots. ASIO at 128 samples (~3ms). IR loader: FileBrowserComponent right panel, double-click .wav. VST3 slots: category picker, auto-open UI on load, plugin list cached to AppData/GitFiddler/knownPlugins.xml (instant startup), Rescan button. PluginSlotComponent is self-contained (owns instance, window, lock). Tuner built: TunerComponent with autocorrelation pitch detection, 660 Hz low-pass filter, needle gauge display (green/yellow/red by cents). Dead man's pedal crash recovery for VST scan. Audio settings persist across restarts. Next: tuner accuracy (still picking up some harmonics with 660 Hz LPF), then polish/layout.
+  Notes: Full signal chain working: 3 pre-IR VST3 slots → IR convolution → 3 post-IR VST3 slots. ASIO at 128 samples (~3ms). IR loader: FileBrowserComponent right panel, double-click .wav. VST3 slots: category picker, auto-open UI on load, plugin list cached to AppData/SmashBox/knownPlugins.xml (instant startup), Rescan button. PluginSlotComponent is self-contained (owns instance, window, lock). Tuner built: TunerComponent with autocorrelation pitch detection. Metronome with BPM/time sig/click vol/spacebar. Amber/charcoal theme via GitFiddlerLookAndFeel. App renamed Smash Box. Local player with WSOLA time-stretching (TempoStretcher class, pure C++). Next: further polish and any other features Ben wants.
 
 ### On-demand topics (filled in if/when they come up)
 
@@ -92,3 +92,4 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - **Session 6 — 2026-06-11:** Audio passthrough working (one-line change to getNextAudioBlock). Setup window built using JUCE's AudioDeviceSelectorComponent — shows device type, input/output device, sample rate, buffer size. Guitar input channel selector added below (routes selected mono input to stereo output). Discovered WASAPI locks buffer at 480 samples — needs ASIO for low latency. PreSonus Universal Control installed but requires reboot to activate. Session ended before confirming ASIO. Next: confirm ASIO appears after reboot, then move on to IR loader.
 - **Session 7 — 2026-06-12:** ASIO confirmed (required ASIO SDK + Projucer flag + JUCE_ASIO module option). IR loader built (FileBrowserComponent, juce_dsp Convolution). VST3 hosting built: category picker, plugin loads with auto UI open, plugin list cached. Full 3+3 slot banks complete — PluginSlotComponent self-contained class, full signal chain working. Next: tuner.
 - **Session 8 — 2026-06-12:** Bug fixes: Rescan visual indicator ("Scanning..." button text), VST scan crash recovery via dead man's pedal (bad plugins auto-skipped + named on next startup), settings dialog double-open guard. Audio device settings now persist across restarts (AudioDeviceManager save/restore via XML). Tuner built: TunerComponent, autocorrelation pitch detection, 660 Hz low-pass filter, needle gauge with colour coding. Still some harmonic bleed at 660 Hz — to investigate next session.
+- **Session 9 — 2026-06-12:** UI polish and new features. Tuner harmonic issue investigated (improved low-pass). Metronome added: BPM/time signature, beat flash dot (amber on beat 1), click volume slider, spacebar toggle. Compact 300px right panel alongside tuner. Amber/charcoal theme (GitFiddlerLookAndFeel applied globally). App renamed to Smash Box. Local music player built from scratch: TempoStretcher class (WSOLA algorithm — time-stretch without pitch shift), PlayerComponent strip at bottom of window. Open button, play/stop, filename display, position scrub bar, speed slider (40–120%), volume slider. No external dependencies needed.
