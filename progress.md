@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-09
-- **Last updated:** 2026-06-12 (session 10)
+- **Last updated:** 2026-06-13 (session 11)
 - **Curriculum version:** v1
 
 ---
@@ -94,3 +94,5 @@ Repo public at: https://github.com/SmashyBen/my-claude-project
 - **Session 8 — 2026-06-12:** Bug fixes: Rescan visual indicator ("Scanning..." button text), VST scan crash recovery via dead man's pedal (bad plugins auto-skipped + named on next startup), settings dialog double-open guard. Audio device settings now persist across restarts (AudioDeviceManager save/restore via XML). Tuner built: TunerComponent, autocorrelation pitch detection, 660 Hz low-pass filter, needle gauge with colour coding. Still some harmonic bleed at 660 Hz — to investigate next session.
 - **Session 9 — 2026-06-12:** UI polish and new features. Tuner harmonic issue investigated (improved low-pass). Metronome added: BPM/time signature, beat flash dot (amber on beat 1), click volume slider, spacebar toggle. Compact 300px right panel alongside tuner. Amber/charcoal theme (GitFiddlerLookAndFeel applied globally). App renamed to Smash Box. Backing track player built using JUCE AudioTransportSource (background read-ahead thread, clean at 128-sample ASIO buffer). Open/play/seek scrub bar/volume. Player pinned to bottom of window. Level meters smoothed (60Hz, fast attack/slow decay). BPM slider mouse wheel now steps 1 BPM. App considered complete by Ben.
 - **Session 10 — 2026-06-12:** UI depth pass + installer. Added 3D dimensionality to buttons/sliders/panels (gradients, bevel edges). Then full StudioLive-style rework: backlit buttons with radial amber glow + ambient spill onto surrounding panel, LED segment meters with bloom, wider knurled fader caps. Release build compiled (7 MB). Inno Setup installer created — SmashBoxSetup.exe (21.5 MB, bundles VC++ Redistributable). Installer tested and confirmed working. Step 10b marked complete.
+- **Session 11 — 2026-06-13:** Three built-in DSP effect modules added. Graphic EQ (15-band ISO, ±12dB vertical faders, output trim, click-free bypass). Delay (1–2000ms, feedback, LPF on feedback path, wet/dry, BPM sync with note divisions, ping-pong mode). Hall Reverb (Freeverb, pre-delay 0–100ms, room size, HF damping, wet/dry). Window height extended to 840px. All effects process guitar signal only, inserted after post-IR VST slots before metronome/player mix-in. Build compiles clean. Also fixed Setup crash (double enterModalState call — switched to ModalComponentManager::attachCallback).
+- **Session 12 — 2026-06-13:** Effects UI polish queued but not yet done (session cut short). Pending: smaller pedal-sized knobs, unit markings around knobs, delay sync adds 1/1 and 1/2 divisions + shows note name not ms when sync on, ping pong fix (feedback cross-routing was backward), parallelogram knob layout with Mix top-right, EQ fader caps narrower + glow amber when not at zero.
